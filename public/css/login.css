@@ -1,19 +1,18 @@
 /* --- Set Font to Montserrat ---*/
 body{
     font-family: 'Montserrat', serif;
-    background-image: url('/images/login-background.jpg');
-    background-size: cover;
+    background-color: #fafafa;
 }
 
 /* --- CSS For Sign In Form ---*/
 .wrapper {
-    margin-top: 15%;
-    /*margin-bottom: 20px;*/
-}
+    margin-top: 10%;
+    /*margin-bottom: 12%;*/
+ }
 
 .form-signin {
     max-width: 420px;
-    padding: 25px 38px 66px;
+    padding: 9px 38px 24px;
     margin: 0 auto;
     background-color: #eee;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -22,9 +21,12 @@ body{
 
 .form-signin-heading {
     text-align:center;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
 }
 
+hr{
+    margin-bottom: 12px;
+}
 .form-control {
     position: relative;
     font-size: 16px;
@@ -33,7 +35,7 @@ body{
 }
 
 input[type="text"] {
-    margin-bottom: 10px;
+    margin-bottom: 14px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
@@ -44,7 +46,7 @@ input[type="password"] {
     border-top-right-radius: 0;
 }
 
-.colorgraph {
+.colorbar {
     height: 7px;
     border-top: 0;
     background: #bd0000;
@@ -55,14 +57,18 @@ input[type="password"] {
 .btn{
     background-color: #bd0000;
     border: none;
+    transition: all 0.2s ease-in-out;
 }
 .btn:hover{
-    background-color: #970000;
+    /*background-color: #970000;*/
+    background-color: #FFFFFF;
+    color: #bd0000;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 /* --- CSS For Clique Logo --- */
 .made-by-clique{
-    padding-top: 3em;
+    padding-top: 2em;
 }
 .clique-logo{
     padding-left: 10px;

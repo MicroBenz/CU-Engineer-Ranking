@@ -1,0 +1,27 @@
+.navbar{
+    background-color: #bd0000;
+}
+.navbar-default .navbar-brand ,.navbar-default .navbar-nav>li>a{
+    color: #FFFFFF;
+}
+body {
+    padding-top: 70px;
+    font-family: 'Montserrat', serif;
+    background-color: #eaedf2;
+}
+.web-title{
+    padding-left: 12px !important;
+}
+
+.sigma-icon{
+    height: 1.3em;
+    margin-top: -8%;
+}
+
+.fa-sign-out:hover{
+    color: #000000;
+}
+
+.navbar-default .navbar-toggle .icon-bar{
+    background-color: #FFFFFF;
+}

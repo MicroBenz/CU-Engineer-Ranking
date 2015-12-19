@@ -1,14 +1,18 @@
 @extends('layout.layout')
 
-@section('css')
+@section('css-for-master')
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
-@endsection
+@stop
+
+@section('title')
+    Sign In
+@stop
 @section('body')
-    <div class = "container">
+    <div class = "container-fluid">
         <div class="wrapper">
             <form action="" method="post" name="Login_Form" class="form-signin">
                 <h3 class="form-signin-heading">Sign In</h3>
-                <hr class="colorgraph"><br>
+                <hr class="colorbar"><br>
                 <input type="text" class="form-control" name="student-id" placeholder="Student ID" required autofocus="" />
                 <input type="password" class="form-control" name="pwd" placeholder="Password" required=""/>
                 <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Login</button>
@@ -16,4 +20,4 @@
             </form>
         </div>
     </div>
-@endsection
+@stop

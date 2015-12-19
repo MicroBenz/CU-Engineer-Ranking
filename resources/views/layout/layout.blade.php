@@ -5,7 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>@yield('title')</title>
+    <title>
+        @if ($__env->yieldContent('title'))
+            @yield('title')
+            - {{ env('APP_NAME') }}
+        @else
+            {{ env('APP_NAME') }}
+        @endif
+    </title>
 
     <!-- Bootstrap core CSS-->
     <link href="{{ asset('css/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
@@ -13,7 +20,8 @@
     <!-- Google Webfonts -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    @yield('css')
+
+    @yield('css-for-master')
 </head>
 
 <body>
