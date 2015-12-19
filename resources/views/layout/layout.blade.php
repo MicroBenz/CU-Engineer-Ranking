@@ -8,7 +8,11 @@
     <title>@yield('title')</title>
 
     <!-- Bootstrap core CSS-->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome/font-awesome.min.css')}}" rel="stylesheet">
+    <!-- Google Webfonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     @yield('css')
 </head>
 

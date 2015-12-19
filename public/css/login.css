@@ -1,0 +1,70 @@
+/* --- Set Font to Montserrat ---*/
+body{
+    font-family: 'Montserrat', serif;
+    background-image: url('/images/login-background.jpg');
+    background-size: cover;
+}
+
+/* --- CSS For Sign In Form ---*/
+.wrapper {
+    margin-top: 15%;
+    /*margin-bottom: 20px;*/
+}
+
+.form-signin {
+    max-width: 420px;
+    padding: 25px 38px 66px;
+    margin: 0 auto;
+    background-color: #eee;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    /*border: 3px rgba(0,0,0,1);*/
+}
+
+.form-signin-heading {
+    text-align:center;
+    margin-bottom: 30px;
+}
+
+.form-control {
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+}
+
+input[type="text"] {
+    margin-bottom: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+input[type="password"] {
+    margin-bottom: 20px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.colorgraph {
+    height: 7px;
+    border-top: 0;
+    background: #bd0000;
+    border-radius: 5px;
+}
+
+/* --- CSS For Button --- */
+.btn{
+    background-color: #bd0000;
+    border: none;
+}
+.btn:hover{
+    background-color: #970000;
+}
+
+/* --- CSS For Clique Logo --- */
+.made-by-clique{
+    padding-top: 3em;
+}
+.clique-logo{
+    padding-left: 10px;
+    height: 30px;
+}
