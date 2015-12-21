@@ -4,24 +4,101 @@
 .navbar-default .navbar-brand ,.navbar-default .navbar-nav>li>a{
     color: #FFFFFF;
 }
+
 body {
     padding-top: 70px;
     font-family: 'Montserrat', serif;
     background-color: #eaedf2;
-}
-.web-title{
-    padding-left: 12px !important;
+
+    margin-bottom: 60px;
 }
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: auto;
+    background-color: #FFFFFF;
+}
+
+.web-title{
+    padding-left: 10px !important;
+}
+
+.web-title:hover{
+    color: #000000;
+}
+
+.chula-engineering-logo,.clique-logo{
+    width: 70%;
+}
 .sigma-icon{
     height: 1.3em;
     margin-top: -8%;
 }
 
-.fa-sign-out:hover{
-    color: #000000;
-}
 
-.navbar-default .navbar-toggle .icon-bar{
-    background-color: #FFFFFF;
+/* --- For Mobile ---*/
+@media only screen and (max-width:768px) {
+    body{
+        margin-bottom: 32%;
+    }
+    .web-title {
+        /*padding-left: 7% !important;*/
+        text-align: center;
+    }
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        /* Set the fixed height of the footer here */
+        height: auto;
+        padding-top: 10px;
+        background-color: #FFFFFF;
+    }
+    .navbar-default .navbar-brand {
+        width: 80%;
+    }
+    .nav>li{
+        text-align: center;
+    }
+    .navbar-default .navbar-nav>li>a {
+        width: 100%;
+    }
+    footer img{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .chula-engineering-logo{
+        /*margin-top: 10px;*/
+        /*margin-bottom: 10px;*/
+        width: 70%;
+    }
+    .clique-logo{
+        width: 50%;
+    }
+
+    /* Set Hamburger button color*/
+    /* 3 Bar Color on no click*/
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: #FFFFFF;
+    }
+
+    /*3 Bar Background color on click*/
+    .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover{
+        background-color: #DDDDDD;
+    }
+
+    /*3 Bar Background color on click*/
+    .navbar-default .navbar-toggle:focus .icon-bar{
+        background-color: #000000;
+    }
+
+
+
 }

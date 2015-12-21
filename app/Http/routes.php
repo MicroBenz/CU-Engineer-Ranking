@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-//    return view('welcome');
-    return view('index');
-});
+
+Route::get('/','PagesController@getHome');
 
 Route::get('/test-login',function(){
     return view('login');
 });
+
+Route::get('/profile','ProfileController@getAcademicProfile');

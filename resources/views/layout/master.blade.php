@@ -16,19 +16,15 @@
                     <span class="icon-bar"></span>
                 </button>
                 <span>
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand hidden-xs" href="#">
                         <img class="sigma-icon" src={{ asset('/images/sigma.png') }}>
                     </a>
-                    <a class="navbar-brand web-title" href="#">CU Engineering Ranking</a>
+                    <a class="navbar-brand web-title" href="{{ url('/') }}">CU Engineering Ranking</a>
                 </span>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                {{--<a class="navbar-brand" href="#">--}}
-                    {{--<img class="sigma-icon" src={{ asset('/images/sigma.png') }}>--}}
-                {{--</a>--}}
                 <ul class="nav navbar-nav navbar-left">
-                    {{--<li><a class="web-title" href="#">CU Engineering Ranking</a></li>--}}
-                    <li><a class="">Academic Profile</a></li>
+                    <li><a class="" href="{{ url('/profile') }}">Academic Profile</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a class="">Ranking Calculator</a></li>
@@ -36,5 +32,23 @@
             </div>
         </div>
     </nav>
+
+    <footer class="footer hidden-xs">
+        <div class="container">
+            <div class="col-md-6">
+                <img class="chula-engineering-logo center-block" src="{{ asset('/images/chula-engineering.png') }}">
+            </div>
+            <div class="col-md-6">
+                <img class="clique-logo center-block" src="{{ asset('/images/clique-logo.png') }}">
+            </div>
+        </div>
+    </footer>
+
+    <footer class="footer visible-xs">
+        <div class="container">
+            <img class="chula-engineering-logo center-block" src="{{ asset('/images/chula-engineering.png') }}">
+            <img class="clique-logo center-block" src="{{ asset('/images/clique-logo.png') }}">
+        </div>
+    </footer>
     @yield('content')
 @stop

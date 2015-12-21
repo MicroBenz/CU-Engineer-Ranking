@@ -74,3 +74,11 @@ input[type="password"] {
     padding-left: 10px;
     height: 30px;
 }
+
+/* --- For Mobile ---*/
+@media only screen and (max-width:768px) {
+    .wrapper {
+        margin-top: 35%;
+        /*margin-bottom: 12%;*/
+    }
+}
