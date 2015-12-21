@@ -1,3 +1,4 @@
+/* Set Navbar Color */
 .navbar{
     background-color: #bd0000;
 }
@@ -5,11 +6,39 @@
     color: #FFFFFF;
 }
 
+/* CSS for Navbar Hover Animation */
+.navbar-default .navbar-nav>li>a{
+    color: #FFFFFF;
+    transition: all 0.2s ease-in-out;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus{
+    background:#FFFFFF;
+    color: #000000;
+}
+/* End CSS for Navbar Hover Animation */
+
+/* CSS for Navbar Active Class*/
+.navbar .nav > .active > a {
+    background: #8c0000;
+    color: #FFFFFF;
+    transition: all 0.2s ease-in-out;
+}
+
+.navbar .nav > .active > a:hover,
+.navbar .nav > .active > a:focus {
+    background:#FFFFFF;
+    color: #000000;
+}
+/* End CSS for Navbar Active Class*/
+
+
 body {
     padding-top: 70px;
+    padding-bottom: 40px;
     font-family: 'Montserrat', serif;
     background-color: #eaedf2;
-
     margin-bottom: 60px;
 }
 
@@ -26,6 +55,14 @@ html {
     background-color: #FFFFFF;
 }
 
+.logo-license{
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+footer img{
+    margin: 0 auto;
+}
 .web-title{
     padding-left: 10px !important;
 }
@@ -34,8 +71,12 @@ html {
     color: #000000;
 }
 
-.chula-engineering-logo,.clique-logo{
-    width: 70%;
+.chula-engineering-logo{
+    width: 74%;
+}
+
+.clique-logo{
+    width: 35%;
 }
 .sigma-icon{
     height: 1.3em;
