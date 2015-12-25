@@ -14,7 +14,7 @@ class CreateUserGPAXesTable extends Migration
     {
         Schema::create('user_gpax', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
+            $table->string('user_id');
             $table->string('year');
             $table->string('semester');
             $table->string('gpa');

@@ -12,10 +12,10 @@ class CreateSubjectInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('subject_infos', function (Blueprint $table) {
+        Schema::create('subjects', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('subject_id');
-            $table->string('subject_name');
+            $table->string('subject_id')->unique();
+            $table->string('name');
             $table->integer('credit');
         });
     }

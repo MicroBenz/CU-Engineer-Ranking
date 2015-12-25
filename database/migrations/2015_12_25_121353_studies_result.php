@@ -14,7 +14,7 @@ class StudiesResult extends Migration
     {
         Schema::create('studies_result', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
+            $table->string('user_id');
             $table->string('year');
             $table->string('semester');
             $table->string('subject_id');
@@ -23,6 +23,11 @@ class StudiesResult extends Migration
             $table  ->foreign('user_id')
                     ->references('user_id')
                     ->on('users')
+                    ->onDelete('cascade');
+
+            $table  ->foreign('subject_id')
+                    ->references('subject_id')
+                    ->on('subjects')
                     ->onDelete('cascade');
 
         });
