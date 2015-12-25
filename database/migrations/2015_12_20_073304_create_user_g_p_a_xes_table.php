@@ -19,12 +19,12 @@ class CreateUserGPAXesTable extends Migration
             $table->string('semester');
             $table->string('gpa');
             $table->string('gpax');
+            $table->timestamps();
 
             $table  ->foreign('user_id')
                     ->references('user_id')
                     ->on('users')
                     ->onDelete('cascade');
-
         });
     }
 

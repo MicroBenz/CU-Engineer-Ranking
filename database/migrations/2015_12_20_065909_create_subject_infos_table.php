@@ -17,6 +17,7 @@ class CreateSubjectInfosTable extends Migration
             $table->string('subject_id')->unique();
             $table->string('name');
             $table->integer('credit');
+            $table->timestamps();
         });
     }
 

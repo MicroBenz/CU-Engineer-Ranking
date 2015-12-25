@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class SubjectInfo extends Model
 {
-    //
-    public $timestamps = false;
+    protected $table = 'subjects';
+    protected $fillable = ['subject_id', 'name', 'credit'];
 
-
+    public function study_result(){
+        return $this->hasMany('App\StudyResult');
+    }
 }
