@@ -28,6 +28,6 @@ class CreateSubjectInfosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('subject_infos');
+        Schema::drop('subjects');
     }
 }
