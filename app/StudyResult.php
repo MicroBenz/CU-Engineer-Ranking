@@ -10,10 +10,10 @@ class StudyResult extends Model
     protected $fillable = ['user_id', 'year', 'semester', 'subject_id', 'grade'];
 
     public function result_owner(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id', 'user_id');
     }
 
     public function subject(){
-        return $this->belongsTo('App\SubjectInfo');
+        return $this->belongsTo('App\SubjectInfo', 'subject_id', 'subject_id');
     }
 }

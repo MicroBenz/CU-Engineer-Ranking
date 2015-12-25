@@ -21,11 +21,11 @@ class User extends Model implements AuthenticatableContract,
     protected $hidden = ['password', 'remember_token'];
 
     public function gpax(){
-        return $this->hasMany('App\UserGPAX');
+        return $this->hasMany('App\UserGPAX', 'user_id', 'user_id');
     }
 
     public function study_result(){
-        return $this->hasMany('App\StudyResult');
+        return $this->hasMany('App\StudyResult', 'user_id', 'user_id');
     }
 
 }

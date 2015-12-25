@@ -10,6 +10,6 @@ class UserGPAX extends Model
     protected $fillable = ['user_id', 'year', 'semester', 'gpa', 'gpax'];
 
     public function gpax_owner(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id', 'user_id');
     }
 }
