@@ -47,14 +47,14 @@ class UserGPAXTableSeeder extends Seeder
 {
     public function run()
     {
-        UserGPAX::create(['user_id'=>'5631036721','year'=>'1','semester'=>'1','gpa'=>'3.xx','gpax'=>'3.xx']);
+        UserGPAX::create(['user_id'=>'5631036721','year'=>'2556','semester'=>'1','gpa'=>'3.xx','gpax'=>'3.xx']);
     }
 }
 class StudyResultTableSeeder extends Seeder
 {
     public function run()
     {
-        StudyResult::create(['user_id'=>'5631036721','year'=>'1','semester'=>'1','subject_id'=>'123','grade'=>'A']);
+        StudyResult::create(['user_id'=>'5631036721','year'=>'2556','semester'=>'1','subject_id'=>'123','grade'=>'A']);
     }
 }
 class AdviserTableSeeder extends Seeder

@@ -13,11 +13,13 @@
     <div class="container hidden-xs">
         <div class="row">
             <div class="col-md-3 card summary-profile">
-                <p class="student-name">Mr.Lorem Ipsum</p>
-                <p class="student-major">Major : Computer Engineering</p>
+                <p class="student-name">{{$user->name}}</p>
+                <p class="student-major">Major : {{$user->major}}</p>
+                {{--TODO ไปifคำนวณจาก grade เอา--}}
                 <p class="student-status">Status : <span class="student-status-text">Normal</span></p>
             </div>
             <div class="col-md-3 card">
+                {{--TODO ต้องหา gpax ของเทอมล่าสุด--}}
                 <p class="header-text">GPAX</p>
                 <p class="gpax">3.98</p>
             </div>
@@ -29,6 +31,32 @@
                 <div id="grade-graph-desktop" style="height: 500px;"></div>
             </div>
         </div>
+        <?php $i=0; ?>
+        @foreach($user->gpax()->get() as $data)
+            @if($i%3==0)
+                <div class="row">
+            @endif
+                    <div class="col-md-3 card term-profile">
+                        <p class="header-text">{{$data->year}}/{{$data->semester}}</p>
+                        <table class="grade-report">
+                            @foreach($user->study_result()->where('year',$data->year)->where('semester',$data->semester)->get() as $result)
+                                <tr>
+                                    <td class="subject">{{$result->subject()->first()->name}}</td>
+                                    {{--เบ้นซ์ มึงลืมหน่วยกิดอะ--}}
+                                    <td class="credit">{{$result->credit}}</td>
+                                    <td class="grade">{{$result->grade}}</td>
+                                </tr>
+                            @endforeach
+                        </table>
+                        <p class="gpa">GPA : {{$data->gpa}}</p>
+                        {{--gpax ด้วย--}}
+                        <p class="gpa">GPAX : {{$data->gpax}}</p>
+                    </div>
+            @if($i%3==0)
+                </div>
+            @endif
+            <?php $i++; ?>
+        @endforeach
         <div class="row">
             <div class="col-md-3 card term-profile">
                 <p class="header-text">2557/1</p>
