@@ -1,0 +1,18 @@
+.grade-weight-table{
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.grade-weight-table td{
+    padding:5px;
+}
+
+.weight,.grade{
+    text-align: center;
+}
+
+.header-table{
+    font-size: 16px;
+    color: #ff0000;
+}
