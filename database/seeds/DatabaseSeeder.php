@@ -32,8 +32,8 @@ class UserTableSeeder extends Seeder
 {
     public function run()
     {
-        User::create(['user_id'=>'5631036721','password'=>'111111','name'=>'Nattapong','surname'=>'Ousirimaneechai','major'=>'CP','adviser_code'=>'PVK']);
-        User::create(['user_id'=>'5631057921','password'=>'111111','name'=>'Patipol','surname'=>'Chiammunchit','major'=>'CP','adviser_code'=>'PVK']);
+        User::create(['user_id'=>'5631036721','password'=>bcrypt('111111'),'name'=>'Nattapong','surname'=>'Ousirimaneechai','major'=>'CP','adviser_code'=>'PVK']);
+        User::create(['user_id'=>'5631057921','password'=>bcrypt('111111'),'name'=>'Patipol','surname'=>'Chiammunchit','major'=>'CP','adviser_code'=>'PVK']);
     }
 }
 class SubjectInfoTableSeeder extends Seeder

@@ -28,7 +28,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Ranking Calculator</a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="{{url().'/logout'}}">Logout</a></li>
                 </ul>
             </div>
         </div>
