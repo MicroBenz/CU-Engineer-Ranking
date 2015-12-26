@@ -1,0 +1,49 @@
+.row{
+    margin-bottom: 15px;
+}
+
+.status-normal{
+    color: #2ca02c;
+}
+
+.status-risk{ /* Use the right word later */
+    color: #ff0000;
+}
+
+.grade-report{
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.grade-report td{
+    padding:2px;
+}
+.grade{
+    width: 15%;
+}
+.subject{
+    width: 85%;
+}
+
+.gpa{
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 1px;
+}
+
+.gpax{
+    text-align: center;
+    font-size: 80px;
+    padding-top: 10px;
+    margin-top: -26px;
+    margin-bottom: -4px;
+}
+
+.summary-profile{
+    font-size: 16px;
+}
+
+.grade-report-header{
+    text-align: center;
+}

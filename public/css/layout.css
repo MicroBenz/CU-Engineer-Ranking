@@ -37,7 +37,9 @@
 body {
     padding-top: 70px;
     padding-bottom: 40px;
-    font-family: 'Montserrat', serif;
+    /*font-family: 'Montserrat', serif;*/
+    /*font-family: 'Noto Sans', sans-serif;*/
+    font-family: 'Oxygen', sans-serif;
     background-color: #eaedf2;
     margin-bottom: 60px;
 }

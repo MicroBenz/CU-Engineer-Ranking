@@ -10,6 +10,10 @@ use App\Http\Controllers\Controller;
 class ProfileController extends Controller
 {
     public function getAcademicProfile(){
-        return view('profile.profile-index');
+        return view('profile.academic-profile');
+    }
+
+    public function getRankingViewer(){
+        return view('profile.major-ranking');
     }
 }
