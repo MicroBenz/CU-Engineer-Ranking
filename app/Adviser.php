@@ -12,6 +12,6 @@ class Adviser extends Model
     protected $fillable = ['code','title','name','surname','major','email'];
 
     public function student(){
-        return $this->belongsToMany('App\User','adviser_code','code');
+        return $this->hasMany('App\User','adviser_code','code');
     }
 }

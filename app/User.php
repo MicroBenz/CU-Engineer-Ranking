@@ -29,7 +29,7 @@ class User extends Model implements AuthenticatableContract,
     }
 
     public function adviser(){
-        return $this->hasOne('App\Adviser','code','adviser_code');
+        return $this->belongsTo('App\Adviser','adviser_code','code');
     }
 
 }
