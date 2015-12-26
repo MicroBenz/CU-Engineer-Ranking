@@ -19,11 +19,11 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
+        $this->call(AdviserTableSeeder::class);
         $this->call(UserTableSeeder::class);
         $this->call(SubjectInfoTableSeeder::class);
         $this->call(UserGPAXTableSeeder::class);
         $this->call(StudyResultTableSeeder::class);
-        $this->call(AdviserTableSeeder::class);
 
         Model::reguard();
     }
@@ -61,6 +61,6 @@ class AdviserTableSeeder extends Seeder
 {
     public function run()
     {
-        Adviser::create(['adviser_code'=>'PVK','adviser_title'=>'Ph.D','adviser_name'=>'Peerapon','adviser_surname'=>'Vateekul','adviser_major'=>'CP','adviser_email'=>'peerapon.vateekul@gmail.com']);
+        Adviser::create(['code'=>'PVK','title'=>'Ph.D','name'=>'Peerapon','surname'=>'Vateekul','major'=>'CP','email'=>'peerapon.vateekul@gmail.com']);
     }
 }
