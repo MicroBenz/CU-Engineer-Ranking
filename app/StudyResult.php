@@ -14,6 +14,6 @@ class StudyResult extends Model
     }
 
     public function subject(){
-        return $this->belongsTo('App\SubjectInfo', 'subject_id', 'subject_id');
+        return $this->hasOne('App\SubjectInfo', 'subject_id', 'subject_id');
     }
 }

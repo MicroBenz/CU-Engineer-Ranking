@@ -10,6 +10,6 @@ class SubjectInfo extends Model
     protected $fillable = ['subject_id', 'name', 'credit'];
 
     public function study_result(){
-        return $this->hasMany('App\StudyResult', 'subject_id', 'subject_id');
+        return $this->belongsToMany('App\StudyResult', 'subject_id', 'subject_id');
     }
 }

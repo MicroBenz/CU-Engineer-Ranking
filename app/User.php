@@ -17,7 +17,7 @@ class User extends Model implements AuthenticatableContract,
     use Authenticatable, Authorizable, CanResetPassword;
 
     protected $table = 'users';
-    protected $fillable = ['user_id', 'password', 'name', 'surname', 'major', 'adviser'];
+    protected $fillable = ['user_id', 'password', 'name', 'surname', 'major', 'adviser_code'];
     protected $hidden = ['password', 'remember_token'];
 
     public function gpax(){
@@ -26,6 +26,10 @@ class User extends Model implements AuthenticatableContract,
 
     public function study_result(){
         return $this->hasMany('App\StudyResult', 'user_id', 'user_id');
+    }
+
+    public function adviser(){
+        return $this->hasOne('App\Adviser','adviser_code','adviser_code');
     }
 
 }

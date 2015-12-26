@@ -24,10 +24,10 @@ class TestController extends Controller
     }
     public function testSubject()
     {
-        $subject = SubjectInfo::where('subject_id','123')->first();
+        $subject = StudyResult::where('subject_id','123')->first();
         $data = [];
         $data['subject'] = $subject;
-        $data['study_result'] = $subject->study_result()->get();
+        $data['study_result'] = $subject->subject()->get();
         return $data;
     }
     public function testGPAX()
@@ -45,6 +45,15 @@ class TestController extends Controller
         $data['result'] = $result;
         $data['user'] = $result->result_owner()->first();
         $data['subject'] = $result->subject()->first();
+        return $data;
+    }
+
+    public function testAdviser()
+    {
+        $user = User::where('user_id','5631036721')->first();
+        $data = [];
+        $data['user'] = $user;
+        $data['adviser']= $user->adviser()->first();
         return $data;
     }
 }
