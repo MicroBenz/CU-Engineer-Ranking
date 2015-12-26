@@ -19,9 +19,9 @@ Route::post('/login','PagesController@postLogin');
 Route::get('/logout','PagesController@logout');
 
 Route::get('/profile','ProfileController@getAcademicProfile');
-Route::get('/major-ranking','ProfileController@getRankingViewer'); 
-Route::get('/ranking-calculator','RankingController@getFreshyRankCalculator');
+Route::get('/major-ranking','ProfileController@getRankingViewer');
 
+Route::get('/ranking-calculator','RankingController@getFreshyRankCalculator');
 
 Route::get('/test/db/user','TestController@testUser');
 Route::get('/test/db/subject','TestController@testSubject');

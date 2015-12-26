@@ -25,10 +25,10 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
                     <li class="active"><a class="" href="{{ url('/profile') }}">Academic Profile</a></li>
-                    <li><a class="" href="{{ url('/ranking') }}">Major Ranking</a></li>
+                    <li><a class="" href="{{ url('/major-ranking') }}">Major Ranking</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Ranking Calculator</a></li>
+                    <li><a href="{{ url('/ranking-calculator') }}">Ranking Calculator</a></li>
                     <li><a href="{{url().'/logout'}}">Logout</a></li>
                 </ul>
             </div>
