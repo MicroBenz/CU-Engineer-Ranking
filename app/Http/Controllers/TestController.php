@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Adviser;
 use App\StudyResult;
 use App\SubjectInfo;
 use App\User;
@@ -20,6 +21,7 @@ class TestController extends Controller
         $data['user'] = $user;
         $data['gpax'] = $user->gpax()->get();
         $data['study_result'] = $user->study_result()->get();
+        $data['adviser'] = $user->adviser()->first();
         return $data;
     }
     public function testSubject()
@@ -50,10 +52,10 @@ class TestController extends Controller
 
     public function testAdviser()
     {
-        $user = User::where('user_id','5631036721')->first();
+        $adviser = Adviser::where('code','PVK')->first();
         $data = [];
-        $data['user'] = $user;
-        $data['adviser']= $user->adviser()->first();
+        $data['adviser'] = $adviser;
+        $data['student']= $adviser->student()->get();
         return $data;
     }
 }

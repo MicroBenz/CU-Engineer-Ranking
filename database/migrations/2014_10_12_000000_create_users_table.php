@@ -22,6 +22,11 @@ class CreateUsersTable extends Migration
             $table->string('adviser_code');
             $table->rememberToken();
             $table->timestamps();
+
+            $table  ->foreign('adviser_code')
+                ->references('code')
+                ->on('advisers')
+                ->onDelete('cascade');
         });
     }
 
