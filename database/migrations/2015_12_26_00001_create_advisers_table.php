@@ -14,12 +14,12 @@ class CreateAdvisersTable extends Migration
     {
         Schema::create('advisers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('adviser_code')->unique();
-            $table->string('adviser_title');
-            $table->string('adviser_name');
-            $table->string('adviser_surname');
-            $table->string('adviser_major');
-            $table->string('adviser_email');
+            $table->string('code')->unique();
+            $table->string('title');
+            $table->string('name');
+            $table->string('surname');
+            $table->string('major');
+            $table->string('email');
         });
     }
 
