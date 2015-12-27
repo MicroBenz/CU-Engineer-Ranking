@@ -78,7 +78,7 @@ input[type="password"] {
 /* --- For Mobile ---*/
 @media only screen and (max-width:768px) {
     .wrapper {
-        margin-top: 35%;
+        margin-top: 20%;
         /*margin-bottom: 12%;*/
     }
 }

@@ -33,6 +33,7 @@
                     {{--TODO ไปifคำนวณจาก grade เอา--}}
                     {{--ใช้เป็นรูปเอาแล้วนะ -Benz--}}
                     <img class="center-block" id="status-image" src="{{ asset('/images/green-check.png') }}">
+                    <p class="status-text status-normal">Normal</p>
                 </div>
             </div>
             <div class="col-md-3 col-sm-3">
@@ -62,7 +63,7 @@
                             <table class="grade-report">
                                 @foreach($user->study_result()->where('year',$data->year)->where('semester',$data->semester)->get() as $result)
                                     <tr>
-                                        <td class="subject">{{$result->subject()->first()->name}}</td>
+                                        <td class="subject">{{$result->subject()->first()->name}} ({{$result->credit}})</td>
                                         {{--เบ้นซ์ มึงลืมหน่วยกิดอะ--}}
                                         <td class="credit">{{$result->credit}}</td>
                                         <td class="grade">{{$result->grade}}</td>
@@ -86,6 +87,7 @@
     <div class="container visible-xs">
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1 card student-info">
+                <p class="header-text">Personal Info</p>
                 <p class="student-name" align="center">{{ $user->name }} {{ $user->surname }}</p>
                 <p class="student-id">{{ $user->user_id }}</p>
                 <p class="student-major">Major : {{ $user->major }}</p>
@@ -104,6 +106,7 @@
             <div class="col-xs-10 col-xs-offset-1 card student-status">
                 <p class="header-text">Status</p>
                 <img class="center-block" id="status-image" src="{{ asset('/images/green-check.png') }}">
+                <p class="status-text status-normal">Normal</p>
             </div>
         </div>
 
@@ -129,7 +132,7 @@
                     <table class="grade-report">
                         @foreach($user->study_result()->where('year',$data->year)->where('semester',$data->semester)->get() as $result)
                             <tr>
-                                <td class="subject">{{$result->subject()->first()->name}}</td>
+                                <td class="subject">{{$result->subject()->first()->name}} ({{$result->credit}})</td>
                                 {{--เบ้นซ์ มึงลืมหน่วยกิดอะ--}}
                                 <td class="credit">{{$result->credit}}</td>
                                 <td class="grade">{{$result->grade}}</td>

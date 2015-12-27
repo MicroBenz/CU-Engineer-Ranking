@@ -27,9 +27,18 @@
                     {{--<option value="five">Five</option>--}}
                 {{--</select>--}}
                 <select id="major" onchange="selectMajor()" data-width="100%" class="selectpicker" data-live-search="true" title="Select Major">
-                    <option value="cp">Computer Engineering</option>
-                    <option value="ie">Electrical Engineering</option>
+                    <option value="ce">Civil Engineering</option>
+                    <option value="ee">Electrical Engineering</option>
                     <option value="me">Mechanical Engineering</option>
+                    <option value="auto">Automotive Engineering</option>
+                    <option value="be">Boat(???) Engineering</option>
+                    <option value="ie">Industrial Engineering</option>
+                    <option value="che">Chemical Engineering</option>
+                    <option value="metal">Metallurgical Engineering</option>
+                    <option value="env">Environmental Engineering</option>
+                    <option value="pe">Petroleum Engineering</option>
+                    <option value="cp">Computer Engineering</option>
+
                 </select>
 
             </div>
@@ -40,51 +49,91 @@
                         <td align="center">Weight</td>
                         <td align="center">Your Grade</td>
                     </tr>
+
                     <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td id="phy1-weight" class="weight"></td>
-                        <td class="grade">A</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td id="cal1-weight" class="weight"></td>
-                        <td class="grade">B+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem</td>
-                        <td class="weight"></td>
+                        <td class="subject">ENG DRAW FUND</td>
+                        <td id="drawing-weight" class="weight">-</td>
                         <td class="grade">B</td>
                     </tr>
+
                     <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="weight"></td>
-                        <td class="grade">C+</td>
+                        <td class="subject">ENG MATERIALS</td>
+                        <td id="materials-weight" class="weight">-</td>
+                        <td class="grade">B</td>
                     </tr>
+
                     <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="weight"></td>
-                        <td class="grade">C</td>
+                        <td class="subject">COMP PROG</td>
+                        <td id="compprog-weight" class="weight">-</td>
+                        <td class="grade">B</td>
                     </tr>
+
                     <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="weight"></td>
-                        <td class="grade">D+</td>
+                        <td class="subject">EXPLORING ENG WORLD</td>
+                        <td id="exploring-weight" class="weight">-</td>
+                        <td class="grade">B</td>
                     </tr>
+
                     <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="weight"></td>
-                        <td class="grade">D</td>
+                        <td class="subject">CAL I</td>
+                        <td id="cal1-weight" class="weight">-</td>
+                        <td class="grade">B+</td>
                     </tr>
+
                     <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="weight"></td>
-                        <td class="grade">W</td>
+                        <td class="subject">CAL II</td>
+                        <td id="cal2-weight" class="weight">-</td>
+                        <td class="grade">B+</td>
                     </tr>
+
                     <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="weight"></td>
-                        <td class="grade">X</td>
+                        <td class="subject">GEN PHYS I</td>
+                        <td id="phy1-weight" class="weight">-</td>
+                        <td class="grade">A</td>
                     </tr>
+
+                    <tr>
+                        <td class="subject">GEN PHYS II</td>
+                        <td id="phy2-weight" class="weight">-</td>
+                        <td class="grade">A</td>
+                    </tr>
+
+                    <tr>
+                        <td class="subject">GEN CHEM</td>
+                        <td id="chem-weight" class="weight">-</td>
+                        <td class="grade">B</td>
+                    </tr>
+
+                    <tr>
+                        <td class="subject">EXP ENG I</td>
+                        <td id="eng1-weight" class="weight">-</td>
+                        <td class="grade">B</td>
+                    </tr>
+
+                    <tr>
+                        <td class="subject">EXP ENG II</td>
+                        <td id="eng2-weight" class="weight">-</td>
+                        <td class="grade">B</td>
+                    </tr>
+
+                    <tr>
+                        <td class="subject">GEN CHEM LAB</td>
+                        <td id="chemlab-weight" class="weight">-</td>
+                        <td class="grade">B</td>
+                    </tr>
+
+                    <tr>
+                        <td class="subject">GEN PHYS LAB I</td>
+                        <td id="phy1lab-weight" class="weight">-</td>
+                        <td class="grade">B</td>
+                    </tr>
+
+                    <tr>
+                        <td class="subject">GEN PHYS LAB II</td>
+                        <td id="phy2lab-weight" class="weight">-</td>
+                        <td class="grade">B</td>
+                    </tr>
+
                 </table>
             </div>
         </div>
@@ -94,15 +143,123 @@
 @section('script')
     <script>
         function selectMajor() {
-            $major_select = document.getElementById("major").value;
-            if ($major_select == "cp"){
-                document.getElementById("phy1-weight").innerHTML = "1";
-                document.getElementById("cal1-weight").innerHTML = "5";
+            var major_select = document.getElementById("major").value;
+            var weight = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14"];
+
+            if (major_select == "ce" || major_select == "me" || major_select == "auto" ||
+                    major_select == "be" || major_select == "che" || major_select == "metal" ){
+                weight[0] = "3";
+                weight[1] = "3";
+                weight[2] = "3";
+                weight[3] = "3";
+                weight[4] = "3";
+                weight[5] = "3";
+                weight[6] = "3";
+                weight[7] = "3";
+                weight[8] = "3";
+                weight[9] = "3";
+                weight[10] = "3";
+                weight[11] = "1";
+                weight[12] = "1";
+                weight[13] = "1";
             }
-            else if ($major_select == "me"){
-                document.getElementById("phy1-weight").innerHTML = "9";
-                document.getElementById("cal1-weight").innerHTML = "1";
+            else if (major_select == "ee"){
+                weight[0] = "3";
+                weight[1] = "3";
+                weight[2] = "3";
+                weight[3] = "3";
+                weight[4] = "6";
+                weight[5] = "6";
+                weight[6] = "3";
+                weight[7] = "6";
+                weight[8] = "3";
+                weight[9] = "3";
+                weight[10] = "3";
+                weight[11] = "1";
+                weight[12] = "1";
+                weight[13] = "1";
             }
+            else if (major_select == "ie" ){
+                weight[0] = "4";
+                weight[1] = "4";
+                weight[2] = "5";
+                weight[3] = "1";
+                weight[4] = "5";
+                weight[5] = "5";
+                weight[6] = "2";
+                weight[7] = "2";
+                weight[8] = "2";
+                weight[9] = "3";
+                weight[10] = "3";
+                weight[11] = "1";
+                weight[12] = "1";
+                weight[13] = "1";
+            }
+            else if (major_select == "env" ){
+                weight[0] = "3";
+                weight[1] = "3";
+                weight[2] = "3";
+                weight[3] = "3";
+                weight[4] = "3";
+                weight[5] = "3";
+                weight[6] = "3";
+                weight[7] = "3";
+                weight[8] = "3";
+                weight[9] = "3";
+                weight[10] = "3";
+                weight[11] = "2";
+                weight[12] = "2";
+                weight[13] = "2";
+            }
+            else if (major_select == "pe" ){
+                weight[0] = "3";
+                weight[1] = "3";
+                weight[2] = "4";
+                weight[3] = "3";
+                weight[4] = "3";
+                weight[5] = "3";
+                weight[6] = "3";
+                weight[7] = "3";
+                weight[8] = "3";
+                weight[9] = "4";
+                weight[10] = "4";
+                weight[11] = "1";
+                weight[12] = "1";
+                weight[13] = "1";
+            }
+            else if (major_select == "cp" ){
+                weight[0] = "3";
+                weight[1] = "3";
+                weight[2] = "9";
+                weight[3] = "3";
+                weight[4] = "3";
+                weight[5] = "3";
+                weight[6] = "3";
+                weight[7] = "3";
+                weight[8] = "3";
+                weight[9] = "3";
+                weight[10] = "3";
+                weight[11] = "1";
+                weight[12] = "1";
+                weight[13] = "1";
+            }
+
+            document.getElementById("drawing-weight").innerHTML = weight[0];
+            document.getElementById("materials-weight").innerHTML = weight[1];
+            document.getElementById("compprog-weight").innerHTML = weight[2];
+            document.getElementById("exploring-weight").innerHTML = weight[3];
+            document.getElementById("cal1-weight").innerHTML = weight[4];
+            document.getElementById("cal2-weight").innerHTML = weight[5];
+            document.getElementById("phy1-weight").innerHTML = weight[6];
+            document.getElementById("phy2-weight").innerHTML = weight[7];
+            document.getElementById("chem-weight").innerHTML = weight[8];
+            document.getElementById("eng1-weight").innerHTML = weight[9];
+            document.getElementById("eng2-weight").innerHTML = weight[10];
+            document.getElementById("chemlab-weight").innerHTML = weight[11];
+            document.getElementById("phy1lab-weight").innerHTML = weight[12];
+            document.getElementById("phy2lab-weight").innerHTML = weight[13];
+
+
         }
     </script>
 

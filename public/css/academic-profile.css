@@ -10,6 +10,18 @@
     color: #ff0000;
 }
 
+.visible-xs .status-text{
+    text-align: center;
+    font-size: 25px;
+    padding-top: 20px;
+}
+
+.hidden-xs .status-text{
+    text-align: center;
+    font-size: 22px;
+    padding-top: 3px;
+    margin-bottom: -8px;
+}
 .grade-report{
     width: 100%;
     font-size: 15px;
