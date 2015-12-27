@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="card major-rank">
                         <p class="header-text">Your Rank is</p>
-                        <p class="rank-number">200</p>
+                        <p class="rank-number">{{$nn}}</p>
                     </div>
                 </div>
                 <div class="row">
