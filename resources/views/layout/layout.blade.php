@@ -28,6 +28,16 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+    <!-- Bootstrap Select-->
+    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/css/bootstrap-select.min.css">--}}
+    <link rel="stylesheet" href="{{ asset('/bootstrap-select/dist/css/bootstrap-select.min.css') }}">
+
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>--}}
+    <script src="{{ asset('/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/i18n/defaults-*.min.js"></script>--}}
+
     @yield('css-for-master')
 </head>
 

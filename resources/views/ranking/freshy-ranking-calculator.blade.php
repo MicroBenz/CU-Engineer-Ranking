@@ -18,14 +18,20 @@
     <div class="container visible-xs">
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
-                <select id="major" onchange="changeMajor()" class="form-control">
-                    <option disabled selected>Select Major</option>
-                    <option value="cp">CP</option>
-                    <option value="ie">IE</option>
-                    <option value="three">Three</option>
-                    <option value="four">Four</option>
-                    <option value="five">Five</option>
+                {{--<select id="major" onchange="changeMajor()" class="form-control">--}}
+                    {{--<option disabled selected>Select Major</option>--}}
+                    {{--<option value="cp">CP</option>--}}
+                    {{--<option value="ie">IE</option>--}}
+                    {{--<option value="three">Three</option>--}}
+                    {{--<option value="four">Four</option>--}}
+                    {{--<option value="five">Five</option>--}}
+                {{--</select>--}}
+                <select id="major" onchange="selectMajor()" data-width="100%" class="selectpicker" data-live-search="true" title="Select Major">
+                    <option value="cp">Computer Engineering</option>
+                    <option value="ie">Electrical Engineering</option>
+                    <option value="me">Mechanical Engineering</option>
                 </select>
+
             </div>
             <div class="col-xs-10 col-xs-offset-1 card">
                 <table class="grade-weight-table">
@@ -87,10 +93,15 @@
 
 @section('script')
     <script>
-        function changeMajor() {
-            if (document.getElementById("major").value == "cp"){
+        function selectMajor() {
+            $major_select = document.getElementById("major").value;
+            if ($major_select == "cp"){
                 document.getElementById("phy1-weight").innerHTML = "1";
                 document.getElementById("cal1-weight").innerHTML = "5";
+            }
+            else if ($major_select == "me"){
+                document.getElementById("phy1-weight").innerHTML = "9";
+                document.getElementById("cal1-weight").innerHTML = "1";
             }
         }
     </script>
