@@ -11,17 +11,36 @@
 
 @section('content')
     <div class="container hidden-xs">
-        <div class="row">
-            <div class="col-md-3 card summary-profile">
-                <p class="student-name">{{$user->name}}</p>
-                <p class="student-major">Major : {{$user->major}}</p>
-                {{--TODO ไปifคำนวณจาก grade เอา--}}
-                <p class="student-status">Status : <span class="student-status-text">Normal</span></p>
+        <div class="row profile-overview">
+            <div class="col-md-4 col-sm-4">
+                <div class="card student-info">
+                    <p class="header-text">Personal Info</p>
+                    <p class="student-name">{{ $user->name }} {{ $user->surname }}</p>
+                    <p class="student-id">{{ $user->user_id }}</p>
+                    <p class="student-major">Major : {{ $user->major }}</p>
+                </div>
             </div>
-            <div class="col-md-3 card">
-                {{--TODO ต้องหา gpax ของเทอมล่าสุด--}}
-                <p class="header-text">GPAX</p>
-                <p class="gpax">3.98</p>
+            <div class="col-md-3 col-sm-3">
+                <div class="card student-gpax">
+                    {{--TODO ต้องหา gpax ของเทอมล่าสุด--}}
+                    <p class="header-text">GPAX</p>
+                    <p class="gpax">3.98</p>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2">
+                <div class="card student-status">
+                    <p class="header-text">Status</p>
+                    {{--TODO ไปifคำนวณจาก grade เอา--}}
+                    {{--ใช้เป็นรูปเอาแล้วนะ -Benz--}}
+                    <img class="center-block" id="status-image" src="{{ asset('/images/green-check.png') }}">
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3">
+                <div class="card student-adviser">
+                    <p class="header-text">Adviser</p>
+                    <p class="adviser-name">Mr.Lorem Ipsum</p>
+                    <p class="adviser-contact">lorem@gmail.com</p>
+                </div>
             </div>
 
         </div>
@@ -31,484 +50,98 @@
                 <div id="grade-graph-desktop" style="height: 500px;"></div>
             </div>
         </div>
+        <p class="grade-report-header">Grade Report</p>
         <?php $i=0; ?>
         @foreach($user->gpax()->get() as $data)
             @if($i%3==0)
                 <div class="row">
             @endif
-                    <div class="col-md-3 card term-profile">
-                        <p class="header-text">{{$data->year}}/{{$data->semester}}</p>
-                        <table class="grade-report">
-                            @foreach($user->study_result()->where('year',$data->year)->where('semester',$data->semester)->get() as $result)
-                                <tr>
-                                    <td class="subject">{{$result->subject()->first()->name}}</td>
-                                    {{--เบ้นซ์ มึงลืมหน่วยกิดอะ--}}
-                                    <td class="credit">{{$result->credit}}</td>
-                                    <td class="grade">{{$result->grade}}</td>
-                                </tr>
-                            @endforeach
-                        </table>
-                        <p class="gpa">GPA : {{$data->gpa}}</p>
-                        {{--gpax ด้วย--}}
-                        <p class="gpa">GPAX : {{$data->gpax}}</p>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="card term-profile">
+                            <p class="header-text">{{$data->year}}/{{$data->semester}}</p>
+                            <table class="grade-report">
+                                @foreach($user->study_result()->where('year',$data->year)->where('semester',$data->semester)->get() as $result)
+                                    <tr>
+                                        <td class="subject">{{$result->subject()->first()->name}}</td>
+                                        {{--เบ้นซ์ มึงลืมหน่วยกิดอะ--}}
+                                        <td class="credit">{{$result->credit}}</td>
+                                        <td class="grade">{{$result->grade}}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                            <p class="gpa">GPA : {{$data->gpa}}</p>
+                            {{--gpax ด้วย--}}
+                            <p class="gpa">GPAX : {{$data->gpax}}</p>
+                        </div>
                     </div>
             @if($i%3==0)
                 </div>
             @endif
             <?php $i++; ?>
         @endforeach
-        <div class="row">
-            <div class="col-md-3 card term-profile">
-                <p class="header-text">2557/1</p>
-                <table class="grade-report">
-                    <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="grade">A</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="grade">B+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem</td>
-                        <td class="grade">B</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="grade">C+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="grade">C</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="grade">D+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="grade">D</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Envi Sci Comm</td>
-                        <td class="grade">F</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="grade">W</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="grade">X</td>
-                    </tr>
-                </table>
-                <p class="gpa">GPA : 3.99</p>
-            </div>
-
-            <div class="col-md-3 card term-profile">
-                <p class="header-text">2557/1</p>
-                <table class="grade-report">
-                    <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="grade">A</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="grade">B+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem</td>
-                        <td class="grade">B</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="grade">C+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="grade">C</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="grade">D+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="grade">D</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Envi Sci Comm</td>
-                        <td class="grade">F</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="grade">W</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="grade">X</td>
-                    </tr>
-                </table>
-                <p class="gpa">GPA : 3.99</p>
-            </div>
-            <div class="col-md-3 card term-profile">
-                <p class="header-text">Semester 2557/2</p>
-                <table class="grade-report">
-                    <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="grade">A</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="grade">B+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem</td>
-                        <td class="grade">B</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="grade">C+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="grade">C</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="grade">D+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="grade">D</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Envi Sci Comm Long Long</td>
-                        <td class="grade">F</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="grade">W</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="grade">X</td>
-                    </tr>
-                </table>
-                <p class="gpa">GPA : 3.99</p>
-            </div>
-            <div class="col-md-3 card term-profile">
-                <p class="header-text">Semester 2557/2</p>
-                <table class="grade-report">
-                    <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="grade">A</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="grade">B+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem</td>
-                        <td class="grade">B</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="grade">C+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="grade">C</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="grade">D+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="grade">D</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Envi Sci Comm Long Long</td>
-                        <td class="grade">F</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="grade">W</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="grade">X</td>
-                    </tr>
-                </table>
-                <p class="gpa">GPA : 3.99</p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4 card term-profile">
-                <p class="header-text">2557/1</p>
-                <table class="grade-report">
-                    <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="grade">A</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="grade">B+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem</td>
-                        <td class="grade">B</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="grade">C+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="grade">C</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="grade">D+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="grade">D</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Envi Sci Comm</td>
-                        <td class="grade">F</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="grade">W</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="grade">X</td>
-                    </tr>
-                </table>
-                <p class="gpa">GPA : 3.99</p>
-            </div>
-
-            <div class="col-md-4 card term-profile">
-                <p class="header-text">2557/1</p>
-                <table class="grade-report">
-                    <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="grade">A</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="grade">B+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem</td>
-                        <td class="grade">B</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="grade">C+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="grade">C</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="grade">D+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="grade">D</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Envi Sci Comm</td>
-                        <td class="grade">F</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="grade">W</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="grade">X</td>
-                    </tr>
-                </table>
-                <p class="gpa">GPA : 3.99</p>
-            </div>
-            <div class="col-md-4 card term-profile">
-                <p class="header-text">Semester 2557/2</p>
-                <table class="grade-report">
-                    <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="grade">A</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="grade">B+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem</td>
-                        <td class="grade">B</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="grade">C+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="grade">C</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="grade">D+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="grade">D</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Envi Sci Comm Long Long</td>
-                        <td class="grade">F</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="grade">W</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="grade">X</td>
-                    </tr>
-                </table>
-                <p class="gpa">GPA : 3.99</p>
-            </div>
-        </div>
 
     </div>
 
     <!-- For Mobile -->
     <div class="container visible-xs">
         <div class="row">
-            <div class="col-xs-10 col-xs-offset-1 card summary-profile">
-                <p class="student-name" align="center">Mr.Tanawat Kaochalongkeang</p>
-                <p class="student-major">Major : Industrial Engineering</p>
-                <p class="student-status">Status : <span class="status-risk">Normal</span></p>
+            <div class="col-xs-10 col-xs-offset-1 card student-info">
+                <p class="student-name" align="center">{{ $user->name }} {{ $user->surname }}</p>
+                <p class="student-id">{{ $user->user_id }}</p>
+                <p class="student-major">Major : {{ $user->major }}</p>
                 <p></p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xs-10 col-xs-offset-1 card">
+            <div class="col-xs-10 col-xs-offset-1 card student-gpax">
                 <p class="header-text">GPAX</p>
                 <p class="gpax">3.98</p>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 card student-status">
+                <p class="header-text">Status</p>
+                <img class="center-block" id="status-image" src="{{ asset('/images/green-check.png') }}">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 card student-adviser">
+                <p class="header-text">Adviser</p>
+                <p class="adviser-name">Mr.Lorem Ipsum</p>
+                <p class="adviser-contact">lorem@gmail.com</p>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1 card grade-graph">
                 <p class="header-text">Your GPAX Graph</p>
                 <div id="grade-graph-mobile" style="height: 250px;"></div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-10 col-xs-offset-1 card term-profile">
-                <p class="header-text">Semester 2557/1</p>
-                <table class="grade-report">
-                    <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="grade">A</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="grade">B+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem</td>
-                        <td class="grade">B</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="grade">C+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="grade">C</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="grade">D+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="grade">D</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Envi Sci Comm</td>
-                        <td class="grade">F</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="grade">W</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="grade">X</td>
-                    </tr>
-                </table>
-                <p class="gpa">GPA : 3.99</p>
+        <?php $i=0; ?>
+        @foreach($user->gpax()->get() as $data)
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1 card term-profile">
+                    <p class="header-text">{{$data->year}}/{{$data->semester}}</p>
+                    <table class="grade-report">
+                        @foreach($user->study_result()->where('year',$data->year)->where('semester',$data->semester)->get() as $result)
+                            <tr>
+                                <td class="subject">{{$result->subject()->first()->name}}</td>
+                                {{--เบ้นซ์ มึงลืมหน่วยกิดอะ--}}
+                                <td class="credit">{{$result->credit}}</td>
+                                <td class="grade">{{$result->grade}}</td>
+                            </tr>
+                        @endforeach
+                    </table>
+                    <p class="gpa">GPA : {{$data->gpa}}</p>
+                    {{--gpax ด้วย--}}
+                    <p class="gpa">GPAX : {{$data->gpax}}</p>
+                </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-10 col-xs-offset-1 card term-profile">
-                <p class="header-text">2557/2</p>
-                <table class="grade-report">
-                    <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="grade">A</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="grade">B+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem</td>
-                        <td class="grade">B</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="grade">C+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="grade">C</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Phys I</td>
-                        <td class="grade">D+</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Calculus I</td>
-                        <td class="grade">D</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Envi Sci Comm Long Long</td>
-                        <td class="grade">F</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Gen Chem Lab</td>
-                        <td class="grade">W</td>
-                    </tr>
-                    <tr>
-                        <td class="subject">Eng Drawing</td>
-                        <td class="grade">X</td>
-                    </tr>
-                </table>
-                <p class="gpa">GPA : 3.99</p>
-            </div>
-        </div>
+        @endforeach
 
     </div>
 @stop

@@ -1,9 +1,32 @@
-.row{
+/*Mobile Version*/
+.visible-xs .row{
     margin-bottom: 15px;
 }
 
-.rank-number{
+.visible-xs .rank-number,.visible-xs .average-gpax{
     text-align: center;
-    font-size: 61px;
+    font-size: 63px;
     margin-top: -14px;
+    margin-bottom: -6px;
+}
+
+/*Desktop Version*/
+.hidden-xs .row{
+    margin-bottom: 12px
+}
+
+.hidden-xs .rank-number,.hidden-xs .average-gpax{
+    text-align: center;
+    font-size: 75px;
+    margin-top: -14px;
+    margin-bottom: -6px;
+}
+
+.hidden-xs .major-rank{
+    padding-bottom: 19px;
+    padding-top: 25px;
+}
+
+.hidden-xs .major-average-gpax{
+    padding-bottom: 20px;
 }

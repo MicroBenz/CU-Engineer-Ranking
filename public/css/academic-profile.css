@@ -32,6 +32,10 @@
     margin-bottom: 1px;
 }
 
+.student-info,.student-gpax,.student-adviser{
+    font-size: 18px;
+    text-align: center;
+}
 .gpax{
     text-align: center;
     font-size: 80px;
@@ -40,10 +44,42 @@
     margin-bottom: -4px;
 }
 
-.summary-profile{
+
+.grade-report-header{
+    text-align: center;
+}
+
+.hidden-xs .term-profile{
+    width: 100%;
+    /*width: 32%;*/
+    /*padding-left: 2%;*/
+    /*padding-right: 2%;*/
+    /*margin-right: 6px;*/
+    /*margin-left: 6px;*/
+}
+
+.hidden-xs .grade-report{
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.hidden-xs .student-info,.hidden-xs .student-adviser,.hidden-xs .student-gpax{
     font-size: 16px;
+    padding-left: 4%;
+    padding-right: 4%;
+    height: 170px;
+}
+
+#status-image{
+    width: 60%;
+}
+
+.profile-overview{
+    height: 200px;
 }
 
 .grade-report-header{
     text-align: center;
+    font-size: 40px;
+    color: #970000;
 }
