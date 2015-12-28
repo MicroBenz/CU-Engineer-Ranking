@@ -20,11 +20,11 @@
                 <p class="student-major">Major : {{ $user->major }}</p>
                 <p class="student-status">Status : <span class="status-normal">Normal</span></p>
                 <hr>
-                <p class="header-text left-text">GPAX : 3.98</p>
+                <p class="header-text left-text">GPAX : {{$gpax_result}}</p>
                 <hr>
                 <p class="header-text left-text">Adviser</p>
-                <p class="adviser-name">Mr.Lorem Ipsum</p>
-                <p class="adviser-contact">lorem@gmail.com</p>
+                <p class="adviser-name">{{$adviser['title'].". ".$adviser['name']." ".$adviser['surname']}}</p>
+                <p class="adviser-contact">{{$adviser['email']}}</p>
 
             </div>
 

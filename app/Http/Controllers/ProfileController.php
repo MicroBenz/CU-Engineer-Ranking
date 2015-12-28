@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Adviser;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -19,7 +20,12 @@ class ProfileController extends Controller
         $user = Auth::user();
         if($user == null)
             return redirect('/login');
-        return view('profile.academic-profile',compact('user'));
+        $max_year = UserGPAX::max('year');
+        $max_semester = UserGPAX::where('year',$max_year)->max('semester');
+        $gpax = UserGPAX::where('user_id',$user->user_id)->where('year',$max_year)->where('semester',$max_semester)->first();
+        $gpax_result = $gpax['gpax'];
+        $adviser = $user->adviser()->first();
+        return view('profile.academic-profile',compact('user','gpax_result','adviser'));
     }
 
     public function getRankingViewer(){
