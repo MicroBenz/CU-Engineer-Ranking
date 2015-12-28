@@ -17,8 +17,8 @@ class CreateUserGPAXesTable extends Migration
             $table->string('user_id');
             $table->string('year');
             $table->string('semester');
-            $table->string('gpa');
-            $table->string('gpax');
+            $table->double('gpa');
+            $table->double('gpax');
             $table->timestamps();
 
             $table  ->foreign('user_id')

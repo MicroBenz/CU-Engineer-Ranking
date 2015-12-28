@@ -26,8 +26,9 @@ class ProfileController extends Controller
         $user = Auth::user();
         if($user == null)
             return redirect('/login');
-        $same_major_student = User::where('major',$user->major)->orderBy("name")->get();
-        $same_year_student = array();
+        $nn = UserGPAX::where('user_gpax.year','2556')->where('user_gpax.semester','1')->join('users','user_gpax.user_id','=','users.user_id')->where('users.major','CP')->orderBy('user_gpax.gpax','desc')->get();
+        //$nn = User::where('major',$user->major)->gpax()->orderBy('gpax')->get();
+        /*$same_year_student = array();
         $grade_student = array();
         foreach ($same_major_student as $major_student) {
             # code...
@@ -41,7 +42,7 @@ class ProfileController extends Controller
         if(sizeof($grade_student) > 0)
             $nn = $grade_student[1]->gpax;
         else
-            $nn = substr((string)$same_major_student[0]->user_id,0,2);
+            $nn = substr((string)$same_major_student[0]->user_id,0,2);*/
         return view('profile.major-ranking',compact('user','nn'));
     }
 }
