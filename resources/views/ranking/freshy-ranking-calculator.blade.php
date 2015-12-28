@@ -11,21 +11,8 @@
 
 @section('content')
     <div class="container hidden-xs">
-
-    </div>
-
-    <!-- For Mobile -->
-    <div class="container visible-xs">
-        <div class="row">
-            <div class="col-xs-10 col-xs-offset-1">
-                {{--<select id="major" onchange="changeMajor()" class="form-control">--}}
-                    {{--<option disabled selected>Select Major</option>--}}
-                    {{--<option value="cp">CP</option>--}}
-                    {{--<option value="ie">IE</option>--}}
-                    {{--<option value="three">Three</option>--}}
-                    {{--<option value="four">Four</option>--}}
-                    {{--<option value="five">Five</option>--}}
-                {{--</select>--}}
+        <div class="col-md-4 col-sm-4">
+            <div class="row">
                 <select id="major" onchange="selectMajor()" data-width="100%" class="selectpicker" data-live-search="true" title="Select Major">
                     <option value="ce">Civil Engineering</option>
                     <option value="ee">Electrical Engineering</option>
@@ -38,7 +25,136 @@
                     <option value="env">Environmental Engineering</option>
                     <option value="pe">Petroleum Engineering</option>
                     <option value="cp">Computer Engineering</option>
+                </select>
+            </div>
+            <div class="row">
+                <div class="card">
+                    <table class="grade-weight-table">
+                        <col width="50%">
+                        <col width="10%">
+                        <col width="40%">
+                        <tr class="header-table">
+                            <td align="center">Subject</td>
+                            <td align="center">Weight</td>
+                            <td align="center">Grade</td>
+                        </tr>
 
+                        <tr>
+                            <td class="subject">ENG DRAW FUND</td>
+                            <td id="drawing-weight" class="weight">-</td>
+                            <td class="grade">B</td>
+                        </tr>
+
+                        <tr>
+                            <td class="subject">ENG MATERIALS</td>
+                            <td id="materials-weight" class="weight">-</td>
+                            <td class="grade">B</td>
+                        </tr>
+
+                        <tr>
+                            <td class="subject">COMP PROG</td>
+                            <td id="compprog-weight" class="weight">-</td>
+                            <td class="grade">B</td>
+                        </tr>
+
+                        <tr>
+                            <td class="subject">EXPLORING ENG WORLD</td>
+                            <td id="exploring-weight" class="weight">-</td>
+                            <td class="grade">B</td>
+                        </tr>
+
+                        <tr>
+                            <td class="subject">CAL I</td>
+                            <td id="cal1-weight" class="weight">-</td>
+                            <td class="grade">B+</td>
+                        </tr>
+
+                        <tr>
+                            <td class="subject">CAL II</td>
+                            <td id="cal2-weight" class="weight">-</td>
+                            <td class="grade">B+</td>
+                        </tr>
+
+                        <tr>
+                            <td class="subject">GEN PHYS I</td>
+                            <td id="phy1-weight" class="weight">-</td>
+                            <td class="grade">A</td>
+                        </tr>
+
+                        <tr>
+                            <td class="subject">GEN PHYS II</td>
+                            <td id="phy2-weight" class="weight">-</td>
+                            <td class="grade">A</td>
+                        </tr>
+
+                        <tr>
+                            <td class="subject">GEN CHEM</td>
+                            <td id="chem-weight" class="weight">-</td>
+                            <td class="grade">B</td>
+                        </tr>
+
+                        <tr>
+                            <td class="subject">EXP ENG I</td>
+                            <td id="eng1-weight" class="weight">-</td>
+                            <td class="grade">B</td>
+                        </tr>
+
+                        <tr>
+                            <td class="subject">EXP ENG II</td>
+                            <td id="eng2-weight" class="weight">-</td>
+                            <td class="grade">B</td>
+                        </tr>
+
+                        <tr>
+                            <td class="subject">GEN CHEM LAB</td>
+                            <td id="chemlab-weight" class="weight">-</td>
+                            <td class="grade">B</td>
+                        </tr>
+
+                        <tr>
+                            <td class="subject">GEN PHYS LAB I</td>
+                            <td id="phy1lab-weight" class="weight">-</td>
+                            <td class="grade">B</td>
+                        </tr>
+
+                        <tr>
+                            <td class="subject">GEN PHYS LAB II</td>
+                            <td id="phy2lab-weight" class="weight">-</td>
+                            <td class="grade">B</td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-8">
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <div class="card">
+                        <p class="header-text">Rank Score</p>
+                        <p class="rank-score">144</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- For Mobile -->
+    <div class="container visible-xs">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <select id="major" onchange="selectMajor()" data-width="100%" class="selectpicker" data-live-search="true" title="Select Major">
+                    <option value="ce">Civil Engineering</option>
+                    <option value="ee">Electrical Engineering</option>
+                    <option value="me">Mechanical Engineering</option>
+                    <option value="auto">Automotive Engineering</option>
+                    <option value="be">Boat(???) Engineering</option>
+                    <option value="ie">Industrial Engineering</option>
+                    <option value="che">Chemical Engineering</option>
+                    <option value="metal">Metallurgical Engineering</option>
+                    <option value="env">Environmental Engineering</option>
+                    <option value="pe">Petroleum Engineering</option>
+                    <option value="cp">Computer Engineering</option>
                 </select>
 
             </div>

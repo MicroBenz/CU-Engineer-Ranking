@@ -5,7 +5,8 @@
 }
 
 .grade-weight-table td{
-    padding:5px;
+    padding-top :5px;
+    padding-bottom: 5px;
 }
 
 .weight,.grade{
@@ -15,4 +16,16 @@
 .header-table{
     font-size: 16px;
     color: #ff0000;
+}
+
+.hidden-xs td{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.rank-score{
+    text-align: center;
+    font-size: 80px;
+    padding-top: 10px;
+    margin-top: -26px;
+    margin-bottom: -4px;
 }
