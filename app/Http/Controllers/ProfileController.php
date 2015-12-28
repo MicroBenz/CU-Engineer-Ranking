@@ -26,7 +26,9 @@ class ProfileController extends Controller
         $user = Auth::user();
         if($user == null)
             return redirect('/login');
-        $nn = UserGPAX::where('user_gpax.year','2556')->where('user_gpax.semester','1')->join('users','user_gpax.user_id','=','users.user_id')->where('users.major','CP')->orderBy('user_gpax.gpax','desc')->get();
+        $max_year = UserGPAX::max('year');
+        $max_semester = UserGPAX::where('year',$max_year)->max('semester');
+        $nn = UserGPAX::where('user_gpax.year',$max_year)->where('user_gpax.semester',$max_semester)->join('users','user_gpax.user_id','=','users.user_id')->where('users.major',$user->major)->orderBy('user_gpax.gpax','desc')->get();
         //$nn = User::where('major',$user->major)->gpax()->orderBy('gpax')->get();
         /*$same_year_student = array();
         $grade_student = array();
