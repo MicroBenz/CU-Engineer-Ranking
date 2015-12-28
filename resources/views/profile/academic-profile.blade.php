@@ -11,6 +11,64 @@
 
 @section('content')
     <div class="container hidden-xs">
+        <!-- Left Panel -->
+        <div class="col-md-4 col-sm-4">
+            <div class="row card profile-overview">
+                <p class="header-text left-text">Personal Info</p>
+                <p class="student-name">{{ $user->name }} {{ $user->surname }}</p>
+                <p class="student-id">{{ $user->user_id }}</p>
+                <p class="student-major">Major : {{ $user->major }}</p>
+                <p class="student-status">Status : <span class="status-normal">Normal</span></p>
+                <hr>
+                <p class="header-text left-text">GPAX : 3.98</p>
+                <hr>
+                <p class="header-text left-text">Adviser</p>
+                <p class="adviser-name">Mr.Lorem Ipsum</p>
+                <p class="adviser-contact">lorem@gmail.com</p>
+
+            </div>
+
+        </div>
+        <!-- Graph Zone -->
+        <div class="col-md-8 col-sm-8">
+            <div class="card">
+                <p class="header-text">Your GPAX Graph</p>
+                <div id="grade-graph-desktop" class="grade-graph" style="height: 361px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container hidden-xs">
+        <p class="grade-report-header">Grade Report</p>
+        <?php $i=0; ?>
+        @foreach($user->gpax()->get() as $data)
+            @if($i%3==0)
+                <div class="row">
+                    @endif
+                    <div class="col-md-4 col-sm-4">
+                        <div class="card term-profile">
+                            <p class="header-text">{{$data->year}}/{{$data->semester}}</p>
+                            <table class="grade-report">
+                                @foreach($user->study_result()->where('year',$data->year)->where('semester',$data->semester)->get() as $result)
+                                    <tr>
+                                        <td class="subject">{{$result->subject()->first()->name}} ({{$result->credit}})</td>
+                                        <td class="credit">{{$result->credit}}</td>
+                                        <td class="grade">{{$result->grade}}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                            <p class="gpa">GPA : {{$data->gpa}}</p>
+                            <p class="gpa">GPAX : {{$data->gpax}}</p>
+                        </div>
+                    </div>
+                    @if($i%3==0)
+                </div>
+            @endif
+            <?php $i++; ?>
+        @endforeach
+    </div>
+    <!-- Below this is old version of desktop page-->
+    <!--
+    <div class="container hidden-xs">
         <div class="row profile-overview">
             <div class="col-md-4 col-sm-4">
                 <div class="card student-info">
@@ -22,7 +80,7 @@
             </div>
             <div class="col-md-3 col-sm-3">
                 <div class="card student-gpax">
-                    {{--TODO ต้องหา gpax ของเทอมล่าสุด--}}
+                    TODO ต้องหา gpax ของเทอมล่าสุด
                     <p class="header-text">GPAX</p>
                     <p class="gpax">3.98</p>
                 </div>
@@ -30,8 +88,8 @@
             <div class="col-md-2 col-sm-2">
                 <div class="card student-status">
                     <p class="header-text">Status</p>
-                    {{--TODO ไปifคำนวณจาก grade เอา--}}
-                    {{--ใช้เป็นรูปเอาแล้วนะ -Benz--}}
+                    TODO ไปifคำนวณจาก grade เอา
+                    ใช้เป็นรูปเอาแล้วนะ -Benz
                     <img class="center-block" id="status-image" src="{{ asset('/images/green-check.png') }}">
                     <p class="status-text status-normal">Normal</p>
                 </div>
@@ -64,14 +122,14 @@
                                 @foreach($user->study_result()->where('year',$data->year)->where('semester',$data->semester)->get() as $result)
                                     <tr>
                                         <td class="subject">{{$result->subject()->first()->name}} ({{$result->credit}})</td>
-                                        {{--เบ้นซ์ มึงลืมหน่วยกิดอะ--}}
+                                        เบ้นซ์ มึงลืมหน่วยกิดอะ
                                         <td class="credit">{{$result->credit}}</td>
                                         <td class="grade">{{$result->grade}}</td>
                                     </tr>
                                 @endforeach
                             </table>
                             <p class="gpa">GPA : {{$data->gpa}}</p>
-                            {{--gpax ด้วย--}}
+                            gpax ด้วย
                             <p class="gpa">GPAX : {{$data->gpax}}</p>
                         </div>
                     </div>
@@ -82,7 +140,8 @@
         @endforeach
 
     </div>
-
+    -->
+    <!-- End of old desktop version -->
     <!-- For Mobile -->
     <div class="container visible-xs">
         <div class="row">
@@ -91,6 +150,7 @@
                 <p class="student-name" align="center">{{ $user->name }} {{ $user->surname }}</p>
                 <p class="student-id">{{ $user->user_id }}</p>
                 <p class="student-major">Major : {{ $user->major }}</p>
+                <p class="student-status">Status : <span class="status-normal">Normal</span></p>
                 <p></p>
             </div>
         </div>
@@ -99,14 +159,6 @@
             <div class="col-xs-10 col-xs-offset-1 card student-gpax">
                 <p class="header-text">GPAX</p>
                 <p class="gpax">3.98</p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-10 col-xs-offset-1 card student-status">
-                <p class="header-text">Status</p>
-                <img class="center-block" id="status-image" src="{{ asset('/images/green-check.png') }}">
-                <p class="status-text status-normal">Normal</p>
             </div>
         </div>
 
