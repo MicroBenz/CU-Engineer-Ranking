@@ -37,7 +37,7 @@ class ProfileController extends Controller
         if($max_semester > 2)
             $max_semester = 2;
         $same_major_student = UserGPAX::where('user_gpax.year',$max_year)->where('user_gpax.semester',$max_semester)->join('users','user_gpax.user_id','=','users.user_id')->where('users.major',$user->major)->orderBy('user_gpax.gpax','desc')->get();
-        $average_gpax = UserGPAX::where('user_gpax.year',$max_year)->where('user_gpax.semester',$max_semester)->avg('gpax');
+        $average_gpax = UserGPAX::where('user_gpax.year',$max_year)->where('user_gpax.semester',$max_semester)->join('users','user_gpax.user_id','=','users.user_id')->where('users.major',$user->major)->avg('gpax');
         $rank = 1;
         foreach ($same_major_student as $major_student) {
             # code...
