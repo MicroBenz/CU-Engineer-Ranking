@@ -28,23 +28,22 @@ class ProfileController extends Controller
             return redirect('/login');
         $max_year = UserGPAX::max('year');
         $max_semester = UserGPAX::where('year',$max_year)->max('semester');
-        $nn = UserGPAX::where('user_gpax.year',$max_year)->where('user_gpax.semester',$max_semester)->join('users','user_gpax.user_id','=','users.user_id')->where('users.major',$user->major)->orderBy('user_gpax.gpax','desc')->get();
-        //$nn = User::where('major',$user->major)->gpax()->orderBy('gpax')->get();
-        /*$same_year_student = array();
-        $grade_student = array();
+        if($max_semester > 2)
+            $max_semester = 2;
+        $same_major_student = UserGPAX::where('user_gpax.year',$max_year)->where('user_gpax.semester',$max_semester)->join('users','user_gpax.user_id','=','users.user_id')->where('users.major',$user->major)->orderBy('user_gpax.gpax','desc')->get();
+        $average_gpax = UserGPAX::where('user_gpax.year',$max_year)->where('user_gpax.semester',$max_semester)->avg('gpax');
+        $rank = 1;
         foreach ($same_major_student as $major_student) {
             # code...
-            if(substr((string)$major_student->user_id,0,2) == substr((string)$user->user_id,0,2) )
+            if($major_student->user_id == $user->user_id)
             {
-                array_push($same_year_student,$major_student);
-                array_push($grade_student, $major_student->gpax()->first());
+                break;
             }
+            $rank++;
         }
-        
-        if(sizeof($grade_student) > 0)
-            $nn = $grade_student[1]->gpax;
-        else
-            $nn = substr((string)$same_major_student[0]->user_id,0,2);*/
-        return view('profile.major-ranking',compact('user','nn'));
+        $data = array();
+        $data['rank'] = $rank;
+        $data['avg_gpax'] = $average_gpax;
+        return view('profile.major-ranking',compact('user','data'));
     }
 }

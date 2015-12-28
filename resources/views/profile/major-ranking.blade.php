@@ -16,13 +16,13 @@
                 <div class="row">
                     <div class="card major-rank">
                         <p class="header-text">Your Rank is</p>
-                        <p class="rank-number">{{$nn}}</p>
+                        <p class="rank-number">{{$data['rank']}}</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="card major-average-gpax">
                         <p class="header-text">Major Average GPAX</p>
-                        <p class="average-gpax">2.78</p>
+                        <p class="average-gpax">{{$data['avg_gpax']}}</p>
                     </div>
                 </div>
             </div>
