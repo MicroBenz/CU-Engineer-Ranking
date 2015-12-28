@@ -16,7 +16,7 @@ class PagesController extends Controller
     public function login(){
         $user = Auth::user();
         if($user != null)
-            return redirect('/');
+            return redirect('/profile');
         $hasError = Session::get('hasError');
         return view('login',compact('hasError'));
     }
@@ -25,7 +25,7 @@ class PagesController extends Controller
         $pw = Input::get('pwd');
         $remember = Input::get('remember');
         if(Auth::attempt(['user_id' => $uid, 'password' => $pw], $remember))
-            return redirect('/');
+            return redirect('/profile');
         else
             return Redirect::back()->with('hasError', true);
     }

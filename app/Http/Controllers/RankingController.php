@@ -16,7 +16,7 @@ class RankingController extends Controller
             return redirect('/login');
         $study_result = $user->study_result()->first();
         if($study_result->major != 'Normal')
-        	return redirect('/');
+        	return redirect('/profile');
         return view('ranking.freshy-ranking-calculator',compact('user'));
     }
 }
