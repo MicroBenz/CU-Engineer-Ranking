@@ -204,26 +204,12 @@
 @section('script')
     <script>
         var info = JSON.parse("{{$gpax_json}}".replace(/&quot;/g,'"'));
-        console.log(info);
         new Morris.Line({
             // ID of the element in which to draw the chart.
             element: 'grade-graph-desktop',
             // Chart data records -- each entry in this array corresponds to a point on
             // the chart.
-            data: [
-                { semester: '2556/1', value: 2.53 },
-                { semester: '2556/2', value: 3.07 },
-                { semester: '2556/S', value: 3.24 },
-                { semester: '2557/1', value: 3.42 },
-                { semester: '2557/2', value: 1.58 },
-                { semester: '2557/S', value: 2.58 },
-                { semester: '2558/1', value: 3.42 },
-                { semester: '2558/2', value: 4.00 },
-                { semester: '2558/S', value: 0.67 },
-                { semester: '2559/1', value: 2.2 },
-                { semester: '2559/2', value: 1.78 },
-                { semester: '2559/S', value: 3.30 },
-            ],
+            data: info,
             // The name of the data record attribute that contains x-values.
             xkey: 'semester',
             // A list of names of data record attributes that contain y-values.
@@ -238,25 +224,13 @@
     </script>
 
     <script>
+        var info = JSON.parse("{{$gpax_json}}".replace(/&quot;/g,'"'));
         new Morris.Line({
             // ID of the element in which to draw the chart.
             element: 'grade-graph-mobile',
             // Chart data records -- each entry in this array corresponds to a point on
             // the chart.
-            data: [
-                { semester: '2556/1', value: 2.53 },
-                { semester: '2556/2', value: 3.07 },
-                { semester: '2556/S', value: 3.24 },
-                { semester: '2557/1', value: 3.42 },
-                { semester: '2557/2', value: 1.58 },
-                { semester: '2557/S', value: 2.58 },
-                { semester: '2558/1', value: 3.42 },
-                { semester: '2558/2', value: 4.00 },
-                { semester: '2558/S', value: 0.67 },
-                { semester: '2559/1', value: 2.2 },
-                { semester: '2559/2', value: 1.78 },
-                { semester: '2559/S', value: 3.30 },
-            ],
+            data: info,
             // The name of the data record attribute that contains x-values.
             xkey: 'semester',
             // A list of names of data record attributes that contain y-values.
