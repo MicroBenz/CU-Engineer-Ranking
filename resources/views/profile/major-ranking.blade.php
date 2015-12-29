@@ -32,6 +32,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <!-- For Mobile -->
     <div class="container visible-xs">
@@ -100,34 +101,13 @@
         });
     </script>
     <script>
+        var info = JSON.parse("{{$ranking_json}}".replace(/&quot;/g,'"'));
         new Morris.Line({
             // ID of the element in which to draw the chart.
             element: 'rank-graph-desktop',
             // Chart data records -- each entry in this array corresponds to a point on
             // the chart.
-            data: [
-                { rank: '1', value: 4.00 , gpax:3.75 },
-                { rank: '2', value: 3.98 , gpax:3.75 },
-                { rank: '3', value: 3.95 , gpax:3.75},
-                { rank: '4', value: 3.90 , gpax:3.75},
-                { rank: '5', value: 3.85 , gpax:3.75},
-                { rank: '6', value: 3.83 , gpax:3.75},
-                { rank: '7', value: 3.81 , gpax:3.75},
-                { rank: '8', value: 3.79 , gpax:3.75},
-                { rank: '9', value: 3.75 , gpax:3.75},
-                { rank: '10', value: 3.70 , gpax:3.75},
-                { rank: '11', value: 3.6 , gpax:3.75},
-                { rank: '12', value: 3.51 , gpax:3.75},
-                { rank: '13', value: 3.42 , gpax:3.75},
-                { rank: '14', value: 3.42 , gpax:3.75},
-                { rank: '15', value: 3.41 , gpax:3.75},
-                { rank: '16', value: 3.39 , gpax:3.75},
-                { rank: '17', value: 3.21 , gpax:3.75},
-                { rank: '18', value: 3.14 , gpax:3.75},
-                { rank: '19', value: 3.12 , gpax:3.75},
-                { rank: '20', value: 3.09 , gpax:3.75},
-                { rank: '21', value: 3.00, gpax:3.75 }
-            ],
+            data: info,
             // The name of the data record attribute that contains x-values.
             xkey: 'rank',
             // A list of names of data record attributes that contain y-values.

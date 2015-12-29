@@ -36,6 +36,7 @@ class UserTableSeeder extends Seeder
         User::create(['user_id'=>'5631057921','password'=>bcrypt('111111'),'name'=>'Patipol','surname'=>'Chiammunchit','major'=>'CP','adviser_code'=>'PVK']);
         User::create(['user_id'=>'5631056221','password'=>bcrypt('111111'),'name'=>'AA','surname'=>'MaiRoo','major'=>'CP','adviser_code'=>'PVK']);
         User::create(['user_id'=>'5631054421','password'=>bcrypt('111111'),'name'=>'BB-8','surname'=>'MaiRoo','major'=>'CP','adviser_code'=>'PVK']);
+        User::create(['user_id'=>'5531054421','password'=>bcrypt('111111'),'name'=>'R2D2','surname'=>'MaiRoo','major'=>'CP','adviser_code'=>'PVK']);
     }
 }
 class SubjectInfoTableSeeder extends Seeder
@@ -49,12 +50,13 @@ class UserGPAXTableSeeder extends Seeder
 {
     public function run()
     {
-        UserGPAX::create(['user_id'=>'5631036721','year'=>'2556','semester'=>'1','gpa'=>'3.70','gpax'=>'3.70']);
-        UserGPAX::create(['user_id'=>'5631057921','year'=>'2556','semester'=>'1','gpa'=>'3.70','gpax'=>'3.30']);
+        UserGPAX::create(['user_id'=>'5631036721','year'=>'2557','semester'=>'2','gpa'=>'3.70','gpax'=>'3.70']);
+        UserGPAX::create(['user_id'=>'5631057921','year'=>'2557','semester'=>'1','gpa'=>'3.70','gpax'=>'3.30']);
         UserGPAX::create(['user_id'=>'5631057921','year'=>'2556','semester'=>'2','gpa'=>'3.70','gpax'=>'3.40']);
-        UserGPAX::create(['user_id'=>'5631057921','year'=>'2557','semester'=>'1','gpa'=>'3.70','gpax'=>'3.50']);
-        UserGPAX::create(['user_id'=>'5631056221','year'=>'2556','semester'=>'1','gpa'=>'3.70','gpax'=>'3.90']);
-        UserGPAX::create(['user_id'=>'5631054421','year'=>'2556','semester'=>'1','gpa'=>'3.70','gpax'=>'3.80']);
+        UserGPAX::create(['user_id'=>'5631057921','year'=>'2557','semester'=>'2','gpa'=>'3.70','gpax'=>'3.85']);
+        UserGPAX::create(['user_id'=>'5631056221','year'=>'2557','semester'=>'2','gpa'=>'3.70','gpax'=>'3.90']);
+        UserGPAX::create(['user_id'=>'5631054421','year'=>'2557','semester'=>'2','gpa'=>'3.70','gpax'=>'3.80']);
+        UserGPAX::create(['user_id'=>'5531054421','year'=>'2557','semester'=>'2','gpa'=>'3.70','gpax'=>'4.00']);
     }
 }
 class StudyResultTableSeeder extends Seeder
