@@ -51,6 +51,8 @@ class UserGPAXTableSeeder extends Seeder
     {
         UserGPAX::create(['user_id'=>'5631036721','year'=>'2556','semester'=>'1','gpa'=>'3.70','gpax'=>'3.70']);
         UserGPAX::create(['user_id'=>'5631057921','year'=>'2556','semester'=>'1','gpa'=>'3.70','gpax'=>'3.30']);
+        UserGPAX::create(['user_id'=>'5631057921','year'=>'2556','semester'=>'2','gpa'=>'3.70','gpax'=>'3.40']);
+        UserGPAX::create(['user_id'=>'5631057921','year'=>'2557','semester'=>'1','gpa'=>'3.70','gpax'=>'3.50']);
         UserGPAX::create(['user_id'=>'5631056221','year'=>'2556','semester'=>'1','gpa'=>'3.70','gpax'=>'3.90']);
         UserGPAX::create(['user_id'=>'5631054421','year'=>'2556','semester'=>'1','gpa'=>'3.70','gpax'=>'3.80']);
     }

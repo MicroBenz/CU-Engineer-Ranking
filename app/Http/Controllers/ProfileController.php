@@ -25,7 +25,16 @@ class ProfileController extends Controller
         $gpax = UserGPAX::where('user_id',$user->user_id)->where('year',$max_year)->where('semester',$max_semester)->first();
         $gpax_result = $gpax['gpax'];
         $adviser = $user->adviser()->first();
-        return view('profile.academic-profile',compact('user','gpax_result','adviser'));
+        $gpax_infos = UserGPAX::where('user_id',$user->user_id)->get();
+        $gpax_array = array();
+        foreach($gpax_infos as $gpax_info){
+            $tmp = array();
+            $tmp['semester'] = strval($gpax_info->year)."/".strval($gpax_info->semester);
+            $tmp['value'] = $gpax_info->gpax;
+            array_push($gpax_array,$tmp);
+        }
+        $gpax_json = json_encode($gpax_array,JSON_UNESCAPED_SLASHES);
+        return view('profile.academic-profile',compact('user','gpax_result','adviser','gpax_json'));
     }
 
     public function getRankingViewer(){
