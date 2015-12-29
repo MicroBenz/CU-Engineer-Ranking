@@ -203,8 +203,8 @@
 
 @section('script')
     <script>
-        //var info = {{$gpax_json}};
-        //console.log(info);
+        var info = JSON.parse("{{$gpax_json}}".replace(/&quot;/g,'"'));
+        console.log(info);
         new Morris.Line({
             // ID of the element in which to draw the chart.
             element: 'grade-graph-desktop',
