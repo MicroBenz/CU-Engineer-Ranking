@@ -55,6 +55,7 @@ class ProfileController extends Controller
         $average_gpax = UserGPAX::where('user_gpax.year',$max_year)->where('user_gpax.semester',$max_semester)
                                 ->join('users','user_gpax.user_id','=','users.user_id')->where('users.major',$user->major)
                                 ->where('users.user_id',">=",$min_id)->where('users.user_id',"<",$max_id)->avg('gpax');
+        $my_gpax = UserGPAX::where('user_gpax.year',$max_year)->where('user_gpax.semester',$max_semester)->where('user_id',$user->user_id)->first();
         $i = 1;
         $ranking_array = array();
         $data = array();
@@ -65,7 +66,7 @@ class ProfileController extends Controller
             $tmp = array();
             $tmp['rank'] = $i;
             $tmp['value'] = $major_student->gpax;
-            $tmp['gpax'] = $average_gpax;
+            $tmp['gpax'] = $my_gpax->gpax;
             array_push($ranking_array,$tmp);
             $i++;
         }
