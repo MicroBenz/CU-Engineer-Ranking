@@ -1,12 +1,13 @@
 @extends('dashboard.master-dashboard')
 
 @section('title')
-    Main
+    Edit Freshy Major Selection Ratio
 @stop
 
 @section('dashboard-title')
-    Main
+    Edit Ratio
 @stop
+
 @section('content')
 
 @stop

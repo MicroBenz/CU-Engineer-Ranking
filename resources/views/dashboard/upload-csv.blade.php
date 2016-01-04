@@ -1,12 +1,13 @@
 @extends('dashboard.master-dashboard')
 
 @section('title')
-    Main
+    Upload CSV
 @stop
 
 @section('dashboard-title')
-    Main
+    Upload CSV
 @stop
+
 @section('content')
 
 @stop

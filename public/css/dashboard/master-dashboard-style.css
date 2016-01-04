@@ -159,6 +159,11 @@ ul.alert-dropdown {
     background-color: #FFFFFF !important;
 }
 
+.navbar-inverse .navbar-nav>.active>a{
+    pointer-events: none;
+    cursor: default;
+}
+
 .side-nav>li>ul>li>a:hover {
     color: #fff;
 }

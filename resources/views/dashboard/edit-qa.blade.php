@@ -1,12 +1,13 @@
 @extends('dashboard.master-dashboard')
 
 @section('title')
-    Main
+    Add/Edit Q&A
 @stop
 
 @section('dashboard-title')
-    Main
+    Add/Edit Q&A
 @stop
+
 @section('content')
 
 @stop

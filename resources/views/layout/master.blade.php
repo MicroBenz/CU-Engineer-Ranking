@@ -24,14 +24,20 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="{{ Request::is('profile') ? 'active' : '' }}"><a class="" href="{{ url('/profile') }}">Academic Profile</a></li>
+                    <li class="{{ Request::is('profile') ? 'active' : '' }}">
+                        <a class="" href="{{ url('/profile') }}">Academic Profile</a>
+                    </li>
                     @if($user->major != 'Normal')
-                        <li class="{{ Request::is('major-ranking') ? 'active' : '' }}"><a class="" href="{{ url('/major-ranking') }}">Ranking in Major</a></li>
+                        <li class="{{ Request::is('major-ranking') ? 'active' : '' }}">
+                            <a class="" href="{{ url('/major-ranking') }}">Ranking in Major</a>
+                        </li>
                     @endif
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if($user->major == 'Normal')
-                        <li class="{{ Request::is('ranking-calculator') ? 'active' : '' }}"><a href="{{ url('/ranking-calculator') }}">Ranking Calculator</a></li>
+                        <li class="{{ Request::is('ranking-calculator') ? 'active' : '' }}">
+                            <a href="{{ url('/ranking-calculator') }}">Ranking Calculator</a>
+                        </li>
                     @endif
                     <li><a href="{{url().'/logout'}}">Logout</a></li>
                 </ul>
@@ -44,8 +50,12 @@
         <div class="container">
             <table class="logo-license">
                 <tr>
-                    <td><img class="chula-engineering-logo center-block" src="{{ asset('/images/chula-engineering.png') }}"></td>
-                    <td><img class="clique-logo center-block" src="{{ asset('/images/clique-logo.png') }}"></td>
+                    <td>
+                        <img class="chula-engineering-logo center-block" src="{{ asset('/images/chula-engineering.png') }}">
+                    </td>
+                    <td>
+                        <img class="clique-logo center-block" src="{{ asset('/images/clique-logo.png') }}">
+                    </td>
                 </tr>
             </table>
         </div>

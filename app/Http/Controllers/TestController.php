@@ -61,4 +61,7 @@ class TestController extends Controller
     public function testDashboard(){
         return view('dashboard.main');
     }
+    public function testEditRatio(){
+        return view('dashboard.edit-ratio');
+    }
 }
