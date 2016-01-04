@@ -39,9 +39,9 @@
     </div>
     <div class="container hidden-xs">
         <p class="grade-report-header">Grade Report</p>
-        <?php $i=0; ?>
+        <?php $i=1; ?>
         @foreach($user->gpax()->get() as $data)
-            @if($i%3==0)
+            @if($i%3==1)
                 <div class="row">
                     @endif
                     <div class="col-md-4 col-sm-4">
@@ -60,9 +60,9 @@
                             <p class="gpa">GPAX : {{$data->gpax}}</p>
                         </div>
                     </div>
-                    @if($i%3==0)
+                @if($i%3==0)
                 </div>
-            @endif
+                @endif
             <?php $i++; ?>
         @endforeach
     </div>
