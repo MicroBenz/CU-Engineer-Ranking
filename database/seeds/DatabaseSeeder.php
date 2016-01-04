@@ -63,7 +63,7 @@ class StudyResultTableSeeder extends Seeder
 {
     public function run()
     {
-        StudyResult::create(['user_id'=>'5631036721','year'=>'2556','semester'=>'1','subject_id'=>'123','grade'=>'A']);
+        StudyResult::create(['user_id'=>'5631036721','year'=>'2557','semester'=>'2','subject_id'=>'123','grade'=>'A']);
     }
 }
 class AdviserTableSeeder extends Seeder
