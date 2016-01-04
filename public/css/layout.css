@@ -70,7 +70,10 @@ footer img{
 }
 
 .web-title:hover{
-    color: #000000;
+    color: #FFFFFF;
+}
+.navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a:focus {
+    color:#FFFFFF !important;
 }
 
 .chula-engineering-logo{

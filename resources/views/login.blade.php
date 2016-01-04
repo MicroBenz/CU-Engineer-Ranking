@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 @endif
-                <input type="text" class="form-control" name="student-id" placeholder="Student ID (10-Digit)" required autofocus="" />
+                <input type="text" class="form-control" name="student-id" placeholder="Student ID (10-Digits)" required autofocus="" />
                 <input type="password" class="form-control" name="pwd" placeholder="Password" required=""/>
                 <div class="checkbox"><label><input type="checkbox" name="remember" value="true">remember-me</label></div>
                 <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Login</button>

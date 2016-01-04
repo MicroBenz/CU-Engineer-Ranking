@@ -16,19 +16,23 @@
                     <span class="icon-bar"></span>
                 </button>
                 <span class="web-brand">
-                    <a class="navbar-brand hidden-xs" href="#">
+                    <a class="navbar-brand hidden-xs">
                         <img class="sigma-icon" src={{ asset('/images/sigma.png') }}>
                     </a>
-                    <a class="navbar-brand web-title" href="{{ url('/profile') }}">CU Engineering Ranking</a>
+                    <a class="navbar-brand web-title">CU Engineering Ranking</a>
                 </span>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
                     <li class="{{ Request::is('profile') ? 'active' : '' }}"><a class="" href="{{ url('/profile') }}">Academic Profile</a></li>
-                    <li class="{{ Request::is('major-ranking') ? 'active' : '' }}"><a class="" href="{{ url('/major-ranking') }}">Major Ranking</a></li>
+                    @if($user->major != 'Normal')
+                        <li class="{{ Request::is('major-ranking') ? 'active' : '' }}"><a class="" href="{{ url('/major-ranking') }}">Major Ranking</a></li>
+                    @endif
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="{{ Request::is('ranking-calculator') ? 'active' : '' }}"><a href="{{ url('/ranking-calculator') }}">Ranking Calculator</a></li>
+                    @if($user->major == 'Normal')
+                        <li class="{{ Request::is('ranking-calculator') ? 'active' : '' }}"><a href="{{ url('/ranking-calculator') }}">Ranking Calculator</a></li>
+                    @endif
                     <li><a href="{{url().'/logout'}}">Logout</a></li>
                 </ul>
             </div>

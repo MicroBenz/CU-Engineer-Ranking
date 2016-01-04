@@ -18,7 +18,7 @@
                     <option value="ee">Electrical Engineering</option>
                     <option value="me">Mechanical Engineering</option>
                     <option value="auto">Automotive Engineering</option>
-                    <option value="be">Boat(???) Engineering</option>
+                    <option value="be">Naval Architecture and Marine Engineering</option>
                     <option value="ie">Industrial Engineering</option>
                     <option value="che">Chemical Engineering</option>
                     <option value="metal">Metallurgical Engineering</option>
@@ -148,7 +148,7 @@
                     <option value="ee">Electrical Engineering</option>
                     <option value="me">Mechanical Engineering</option>
                     <option value="auto">Automotive Engineering</option>
-                    <option value="be">Boat(???) Engineering</option>
+                    <option value="be">Naval Architecture and Marine Engineering</option>
                     <option value="ie">Industrial Engineering</option>
                     <option value="che">Chemical Engineering</option>
                     <option value="metal">Metallurgical Engineering</option>
@@ -251,6 +251,10 @@
                     </tr>
 
                 </table>
+            </div>
+            <div class="col-xs-10 col-xs-offset-1 card rank">
+                <p class="header-text">Rank Score</p>
+                <p class="rank-score">144</p>
             </div>
         </div>
     </div>
