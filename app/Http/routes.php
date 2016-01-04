@@ -28,3 +28,5 @@ Route::get('/test/db/subject','TestController@testSubject');
 Route::get('/test/db/gpax','TestController@testGPAX');
 Route::get('/test/db/result','TestController@testResult');
 Route::get('/test/db/adviser','TestController@testAdviser');
+
+Route::get('/test/dashboard','TestController@testDashboard');

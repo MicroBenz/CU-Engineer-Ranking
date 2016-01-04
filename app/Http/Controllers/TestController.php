@@ -58,4 +58,7 @@ class TestController extends Controller
         $data['student']= $adviser->student()->get();
         return $data;
     }
+    public function testDashboard(){
+        return view('dashboard.master-dashboard');
+    }
 }
