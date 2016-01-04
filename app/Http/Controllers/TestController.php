@@ -59,6 +59,6 @@ class TestController extends Controller
         return $data;
     }
     public function testDashboard(){
-        return view('dashboard.master-dashboard');
+        return view('dashboard.main');
     }
 }
