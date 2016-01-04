@@ -22,6 +22,8 @@
                     <a class="navbar-brand web-title">CU Engineering Ranking</a>
                 </span>
             </div>
+
+
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
                     <li class="{{ Request::is('profile') ? 'active' : '' }}">
@@ -39,7 +41,7 @@
                             <a href="{{ url('/ranking-calculator') }}">Ranking Calculator</a>
                         </li>
                     @endif
-                    <li><a href="{{url().'/logout'}}">Logout</a></li>
+                    <li><a href="{{url().'/logout'}}"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
                 </ul>
             </div>
         </div>

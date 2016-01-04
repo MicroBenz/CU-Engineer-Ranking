@@ -39,7 +39,6 @@
 }
 /* End CSS for Navbar Active Class*/
 
-
 body {
     padding-top: 70px;
     padding-bottom: 40px;
@@ -92,6 +91,28 @@ footer img{
 .sigma-icon{
     height: 1.3em;
     margin-top: -8%;
+}
+
+.title-header{
+    text-align: center;
+    font-size: 40px;
+    color: #970000;
+}
+
+.visible-xs .title-header{
+    font-size: 27px;
+}
+
+.title-subheader{
+    text-align: center;
+    font-size: 20px;
+    color: #780000;
+    margin-top: -10px;
+    padding-bottom: 10px;
+}
+
+.visible-xs .title-subheader{
+    font-size: 15px;
 }
 
 
@@ -150,7 +171,6 @@ footer img{
     .navbar-default .navbar-toggle:focus .icon-bar{
         background-color: #000000;
     }
-
 
 
 }

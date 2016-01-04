@@ -10,7 +10,9 @@
 @stop
 
 @section('content')
+
     <div class="container hidden-xs">
+        <p class="title-header">Academic Profile</p>
         <!-- Left Panel -->
         <div class="col-md-4 col-sm-4">
             <div class="row card profile-overview">
@@ -38,7 +40,7 @@
         </div>
     </div>
     <div class="container hidden-xs">
-        <p class="grade-report-header">Grade Report</p>
+        <p class="title-header">Grade Report</p>
         <?php $i=1; ?>
         @foreach($user->gpax()->get() as $data)
             @if($i%3==1)
@@ -69,6 +71,7 @@
 
     <!-- For Mobile -->
     <div class="container visible-xs">
+        <p class="title-header">Academic Profile</p>
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1 card student-info">
                 <p class="header-text">Personal Info</p>
@@ -101,7 +104,7 @@
                 <div id="grade-graph-mobile" style="height: 250px;"></div>
             </div>
         </div>
-        <?php $i=0; ?>
+        <p class="title-header">Grade Report</p>
         @foreach($user->gpax()->get() as $data)
             <div class="row">
                 <div class="col-xs-10 col-xs-offset-1 card term-profile">

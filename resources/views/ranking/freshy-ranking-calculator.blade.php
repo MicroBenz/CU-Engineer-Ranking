@@ -11,6 +11,9 @@
 
 @section('content')
     <div class="container hidden-xs">
+        <p class="title-header">Ranking Calculator</p>
+        <p class="title-subheader">Select major and see your approximation rank!</p>
+        <div class="col-md-2 col-sm-2"></div>
         <div class="col-md-4 col-sm-4">
             <div class="row">
                 <select id="major" onchange="selectMajor()" data-width="100%" class="selectpicker" data-live-search="true" title="Select Major">
@@ -127,9 +130,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8 col-sm-8">
+        <div class="col-md-3 col-sm-3 rank-column">
             <div class="row">
-                <div class="col-md-4 col-sm-4">
+                <div class="col-md-12 col-sm-12">
                     <div class="card">
                         <p class="header-text">Your Approx. Rank</p>
                         <p class="rank-score">144</p>
@@ -137,7 +140,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 col-sm-4 approx-rank">
+                <div class="col-md-12 col-sm-12 approx-rank">
                     <div class="card">
                         <p class="header-text">Min Rank</p>
                         <p class="rank-score">253</p>
@@ -145,7 +148,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 col-sm-4 approx-rank">
+                <div class="col-md-12 col-sm-12 approx-rank">
                     <div class="card">
                         <p class="header-text">Max Rank</p>
                         <p class="rank-score">107</p>
@@ -157,6 +160,8 @@
 
     <!-- For Mobile -->
     <div class="container visible-xs">
+        <p class="title-header">Ranking Calculator</p>
+        <p class="title-subheader">Select major and see your approximation rank below!</p>
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
                 <select id="major" onchange="selectMajor()" data-width="100%" class="selectpicker" data-live-search="true" title="Select Major">
@@ -271,6 +276,14 @@
             <div class="col-xs-10 col-xs-offset-1 card rank">
                 <p class="header-text">Rank Score</p>
                 <p class="rank-score">144</p>
+            </div>
+            <div class="col-xs-10 col-xs-offset-1 card rank">
+                <p class="header-text">Min Rank</p>
+                <p class="rank-score">999</p>
+            </div>
+            <div class="col-xs-10 col-xs-offset-1 card rank">
+                <p class="header-text">Max Rank</p>
+                <p class="rank-score">1</p>
             </div>
         </div>
     </div>
