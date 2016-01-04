@@ -131,8 +131,24 @@
             <div class="row">
                 <div class="col-md-4 col-sm-4">
                     <div class="card">
-                        <p class="header-text">Rank Score</p>
+                        <p class="header-text">Your Approx. Rank</p>
                         <p class="rank-score">144</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4 approx-rank">
+                    <div class="card">
+                        <p class="header-text">Min Rank</p>
+                        <p class="rank-score">253</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4 approx-rank">
+                    <div class="card">
+                        <p class="header-text">Max Rank</p>
+                        <p class="rank-score">107</p>
                     </div>
                 </div>
             </div>

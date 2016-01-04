@@ -26,7 +26,7 @@
                 <ul class="nav navbar-nav navbar-left">
                     <li class="{{ Request::is('profile') ? 'active' : '' }}"><a class="" href="{{ url('/profile') }}">Academic Profile</a></li>
                     @if($user->major != 'Normal')
-                        <li class="{{ Request::is('major-ranking') ? 'active' : '' }}"><a class="" href="{{ url('/major-ranking') }}">Major Ranking</a></li>
+                        <li class="{{ Request::is('major-ranking') ? 'active' : '' }}"><a class="" href="{{ url('/major-ranking') }}">Ranking in Major</a></li>
                     @endif
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
