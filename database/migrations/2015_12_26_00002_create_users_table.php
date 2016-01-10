@@ -20,9 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('surname');
             $table->string('major');
             $table->string('adviser_code');
+            $table->string('status');
             $table->rememberToken();
             $table->timestamps();
-
             $table  ->foreign('adviser_code')
                 ->references('code')
                 ->on('advisers')
