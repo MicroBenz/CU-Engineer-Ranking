@@ -135,7 +135,7 @@
                 <div class="col-md-12 col-sm-12">
                     <div class="card">
                         <p class="header-text">Your Approx. Rank</p>
-                        <p class="rank-score">144</p>
+                        <p class="rank-score">{{$score}}</p>
                     </div>
                 </div>
             </div>

@@ -7,6 +7,7 @@ use App\UserGPAX;
 use App\SubjectInfo;
 use App\StudyResult;
 use App\Adviser;
+use App\RankingWeight;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SubjectInfoTableSeeder::class);
         $this->call(UserGPAXTableSeeder::class);
         $this->call(StudyResultTableSeeder::class);
+        $this->call(RankingWeightTableSeeder::class);
 
         Model::reguard();
     }
@@ -135,5 +137,45 @@ class AdviserTableSeeder extends Seeder
     public function run()
     {
         Adviser::create(['code'=>'PVK','title'=>'Ph.D','name'=>'Peerapon','surname'=>'Vateekul','major'=>'CP','email'=>'peerapon.vateekul@gmail.com']);
+    }
+}
+
+class RankingWeightTableSeeder extends Seeder
+{
+    public function run()
+    {
+        RankingWeight::create(['major'=>'ce','drawing'=>'3','material'=>'3','com_prog'=>'3','exp_eng_world'=>'3','cal_1'=>'3',
+                                'cal_2'=>'3','gen_phy_1'=>'3','gen_phy_2'=>'3','gen_chem'=>'3','exp_eng_1'=>'3','exp_eng_2'=>'3',
+                                'gen_chem_lab'=>'1','gen_phy_lab_1'=>'1','gen_phy_lab_2'=>'1']);
+        RankingWeight::create(['major'=>'ee','drawing'=>'3','material'=>'3','com_prog'=>'3','exp_eng_world'=>'3','cal_1'=>'6',
+                                'cal_2'=>'6','gen_phy_1'=>'3','gen_phy_2'=>'6','gen_chem'=>'3','exp_eng_1'=>'3','exp_eng_2'=>'3',
+                                'gen_chem_lab'=>'1','gen_phy_lab_1'=>'1','gen_phy_lab_2'=>'1']);
+        RankingWeight::create(['major'=>'me','drawing'=>'3','material'=>'3','com_prog'=>'3','exp_eng_world'=>'3','cal_1'=>'3',
+                                'cal_2'=>'3','gen_phy_1'=>'3','gen_phy_2'=>'3','gen_chem'=>'3','exp_eng_1'=>'3','exp_eng_2'=>'3',
+                                'gen_chem_lab'=>'1','gen_phy_lab_1'=>'1','gen_phy_lab_2'=>'1']);
+        RankingWeight::create(['major'=>'auto','drawing'=>'3','material'=>'3','com_prog'=>'3','exp_eng_world'=>'3','cal_1'=>'3',
+                                'cal_2'=>'3','gen_phy_1'=>'3','gen_phy_2'=>'3','gen_chem'=>'3','exp_eng_1'=>'3','exp_eng_2'=>'3',
+                                'gen_chem_lab'=>'1','gen_phy_lab_1'=>'1','gen_phy_lab_2'=>'1']);
+        RankingWeight::create(['major'=>'be','drawing'=>'3','material'=>'3','com_prog'=>'3','exp_eng_world'=>'3','cal_1'=>'3',
+                                'cal_2'=>'3','gen_phy_1'=>'3','gen_phy_2'=>'3','gen_chem'=>'3','exp_eng_1'=>'3','exp_eng_2'=>'3',
+                                'gen_chem_lab'=>'1','gen_phy_lab_1'=>'1','gen_phy_lab_2'=>'1']);
+        RankingWeight::create(['major'=>'ie','drawing'=>'4','material'=>'4','com_prog'=>'5','exp_eng_world'=>'1','cal_1'=>'5',
+                                'cal_2'=>'5','gen_phy_1'=>'2','gen_phy_2'=>'2','gen_chem'=>'2','exp_eng_1'=>'3','exp_eng_2'=>'3',
+                                'gen_chem_lab'=>'1','gen_phy_lab_1'=>'1','gen_phy_lab_2'=>'1']);
+        RankingWeight::create(['major'=>'che','drawing'=>'3','material'=>'3','com_prog'=>'3','exp_eng_world'=>'3','cal_1'=>'3',
+                                'cal_2'=>'3','gen_phy_1'=>'3','gen_phy_2'=>'3','gen_chem'=>'3','exp_eng_1'=>'3','exp_eng_2'=>'3',
+                                'gen_chem_lab'=>'1','gen_phy_lab_1'=>'1','gen_phy_lab_2'=>'1']);
+        RankingWeight::create(['major'=>'metal','drawing'=>'3','material'=>'3','com_prog'=>'3','exp_eng_world'=>'3','cal_1'=>'3',
+                                'cal_2'=>'3','gen_phy_1'=>'3','gen_phy_2'=>'3','gen_chem'=>'3','exp_eng_1'=>'3','exp_eng_2'=>'3',
+                                'gen_chem_lab'=>'1','gen_phy_lab_1'=>'1','gen_phy_lab_2'=>'1']);
+        RankingWeight::create(['major'=>'env','drawing'=>'3','material'=>'3','com_prog'=>'3','exp_eng_world'=>'3','cal_1'=>'3',
+                                'cal_2'=>'3','gen_phy_1'=>'3','gen_phy_2'=>'3','gen_chem'=>'3','exp_eng_1'=>'3','exp_eng_2'=>'3',
+                                'gen_chem_lab'=>'2','gen_phy_lab_1'=>'2','gen_phy_lab_2'=>'2']);
+        RankingWeight::create(['major'=>'pe','drawing'=>'3','material'=>'3','com_prog'=>'4','exp_eng_world'=>'3','cal_1'=>'3',
+                                'cal_2'=>'3','gen_phy_1'=>'3','gen_phy_2'=>'3','gen_chem'=>'3','exp_eng_1'=>'4','exp_eng_2'=>'4',
+                                'gen_chem_lab'=>'1','gen_phy_lab_1'=>'1','gen_phy_lab_2'=>'1']);
+        RankingWeight::create(['major'=>'cp','drawing'=>'3','material'=>'3','com_prog'=>'9','exp_eng_world'=>'3','cal_1'=>'3',
+                                'cal_2'=>'3','gen_phy_1'=>'3','gen_phy_2'=>'3','gen_chem'=>'3','exp_eng_1'=>'3','exp_eng_2'=>'3',
+                                'gen_chem_lab'=>'1','gen_phy_lab_1'=>'1','gen_phy_lab_2'=>'1']);
     }
 }
