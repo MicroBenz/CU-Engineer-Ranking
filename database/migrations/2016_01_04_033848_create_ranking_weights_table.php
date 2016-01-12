@@ -15,20 +15,20 @@ class CreateRankingWeightsTable extends Migration
         Schema::create('ranking_weights', function (Blueprint $table) {
             $table->increments('id');
             $table->string('major');
-            $table->double('drawing');
-            $table->double('material');
-            $table->double('com_prog');
-            $table->double('exp_eng_world');
-            $table->double('cal_1');
-            $table->double('cal_2');
-            $table->double('gen_phy_1');
-            $table->double('gen_phy_2');
-            $table->double('gen_chem');
-            $table->double('exp_eng_1');
-            $table->double('exp_eng_2');
-            $table->double('gen_chem_lab');
-            $table->double('gen_phy_lab_1');
-            $table->double('gen_phy_lab_2');
+            $table->double('ENG DRAWING');
+            $table->double('ENG MATERIALS');
+            $table->double('COMP PROG');
+            $table->double('EXPL ENG WORLD');
+            $table->double('CALCULUS I');
+            $table->double('CALCULUS II');
+            $table->double('GEN PHYS I');
+            $table->double('GEN PHYS II');
+            $table->double('GEN CHEM');
+            $table->double('EXP ENG I');
+            $table->double('EXP ENG II');
+            $table->double('GEN CHEM LAB');
+            $table->double('GEN PHYS LAB I');
+            $table->double('GEN PHYS LAB II');
         });
     }
 

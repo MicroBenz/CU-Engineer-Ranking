@@ -14,5 +14,5 @@ class RankingWeight extends Model
     						,'gen_phy_2','gen_chem','exp_eng_1','exp_eng_2','gen_chem_lab','gen_phy_lab_1','gen_phy_lab_2'];
 
 
-    //public $timestamps = false;
+    public $timestamps = false;
 }
