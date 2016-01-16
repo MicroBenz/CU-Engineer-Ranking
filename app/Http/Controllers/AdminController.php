@@ -52,10 +52,7 @@ class AdminController extends Controller
         return view('dashboard.edit-qa');
     }
 
-    public function getMajorScore(){
-        $user = Auth::user();
-        if($user == null)
-            return redirect('/login');
+    public function calOneStudentMajorScore(Array $user){
         
         $student_grade = StudyResult::where('studies_result.user_id',$user->user_id)
                             ->join('subjects','studies_result.subject_id','=','subjects.subject_id')->get();
@@ -85,4 +82,14 @@ class AdminController extends Controller
         }   
 
     }
+
+    public function calAllStudentMajorScore(){
+        $non_major_student = User::where('major','Normal')->get();
+        foreach ($non_major_student as $student) {
+            # code...
+            calOneStudentMajorScore($student);
+        }
+    }
+
+
 }
