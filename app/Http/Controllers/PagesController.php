@@ -42,6 +42,6 @@ class PagesController extends Controller
         $user = Auth::user();
         if($user == null)
             return redirect('/login');
-        return view('index');
+        return view('profile.academic-profile');
     }
 }

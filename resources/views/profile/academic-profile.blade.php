@@ -35,6 +35,7 @@
         <div class="col-md-8 col-sm-8">
             <div class="card">
                 <p class="header-text">Your GPAX Graph</p>
+                {{--<div id="grade-graph-desktop" class="grade-graph" style="height: 361px;"></div>--}}
                 <div id="grade-graph-desktop" class="grade-graph" style="height: 361px;"></div>
             </div>
         </div>
@@ -133,26 +134,26 @@
 @stop
 
 @section('script')
-    <script>
-        var info = JSON.parse("{{$gpax_json}}".replace(/&quot;/g,'"'));
-        new Morris.Line({
-            // ID of the element in which to draw the chart.
-            element: 'grade-graph-desktop',
-            // Chart data records -- each entry in this array corresponds to a point on
-            // the chart.
-            data: info,
-            // The name of the data record attribute that contains x-values.
-            xkey: 'semester',
-            // A list of names of data record attributes that contain y-values.
-            ykeys: ['value'],
-            // Labels for the ykeys -- will be displayed when you hover over the
-            // chart.
-            labels: ['GPAX'],
+    {{--<script>--}}
+        {{--var info = JSON.parse("{{$gpax_json}}".replace(/&quot;/g,'"'));--}}
+        {{--new Morris.Line({--}}
+            {{--// ID of the element in which to draw the chart.--}}
+            {{--element: 'grade-graph-desktop',--}}
+            {{--// Chart data records -- each entry in this array corresponds to a point on--}}
+            {{--// the chart.--}}
+            {{--data: info,--}}
+            {{--// The name of the data record attribute that contains x-values.--}}
+            {{--xkey: 'semester',--}}
+            {{--// A list of names of data record attributes that contain y-values.--}}
+            {{--ykeys: ['value'],--}}
+            {{--// Labels for the ykeys -- will be displayed when you hover over the--}}
+            {{--// chart.--}}
+            {{--labels: ['GPAX'],--}}
 
-            parseTime: false,
-            gridTextFamily:'Montserrat'
-        });
-    </script>
+            {{--parseTime: false,--}}
+            {{--gridTextFamily:'Montserrat'--}}
+        {{--});--}}
+    {{--</script>--}}
 
     <script>
         var info = JSON.parse("{{$gpax_json}}".replace(/&quot;/g,'"'));
@@ -172,6 +173,17 @@
 
             parseTime: false,
             gridTextFamily:'Montserrat'
+        });
+    </script>
+    <script>
+        var chart = c3.generate({
+            bindto: '#grade-graph-desktop',
+            data: {
+                columns: [
+                    ['data1', 30, 200, 100, 400, 150, 250],
+                    ['data2', 50, 20, 10, 40, 15, 25]
+                ]
+            }
         });
     </script>
 @stop

@@ -25,9 +25,7 @@
 
     <!-- Morris API for Graph Plot-->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
 
     <!-- Bootstrap Select-->
     {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/css/bootstrap-select.min.css">--}}
@@ -37,6 +35,10 @@
     <script src="{{ asset('/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/i18n/defaults-*.min.js"></script>--}}
+
+    <!-- C3 Graph API -->
+    <link href="{{ asset('css/c3.min.css') }}" rel="stylesheet" type="text/css">
+
 
     @yield('css-for-master')
 </head>
@@ -50,6 +52,15 @@
     <script src="{{ asset('js/bootstrap.min.js')  }}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{{ asset('js/ie10-viewport-bug-workaround.js') }}"></script>
+
+    <!-- Morris JS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+    <!-- C3 JS -->
+    <script src="{{ asset('js/d3.min.js') }}" charset="utf-8"></script>
+    <script src="{{ asset('js/c3.min.js') }}"></script>
     @yield('script')
 </body>
 </html>
