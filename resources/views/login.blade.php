@@ -12,8 +12,8 @@
         <div class="wrapper">
             <form action="{{url().'/login'}}" method="post" name="Login_Form" class="form-signin">
                 {{csrf_field()}}
-                <h3 class="form-signin-heading">Sign In</h3>
-                <hr class="colorbar"><br>
+                <h3 class="form-signin-heading">CU Engineering Ranking</h3>
+                <hr class="colorbar">
                 @if($hasError == true)
                     <div class="form-group">
                         <div class="col-sm-12">
@@ -21,6 +21,7 @@
                         </div>
                     </div>
                 @endif
+                <p class="form-login-text">Please Login</p>
                 <input type="text" class="form-control" name="student-id" placeholder="Student ID (10-Digits)" required autofocus="" />
                 <input type="password" class="form-control" name="pwd" placeholder="Password" required=""/>
                 <div class="checkbox"><label><input type="checkbox" name="remember" value="true">remember-me</label></div>
