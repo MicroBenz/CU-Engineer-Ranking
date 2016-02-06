@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\SubjectInfo;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 
 use App\StudyResult;
@@ -44,6 +46,48 @@ class AdminController extends Controller
         }
         return view('dashboard.upload-csv');
     }
+
+    public function postUploadCSV()
+    {
+        $user = Auth::user();
+        if (!$user)
+            return redirect('/admin');
+        if (Input::hasFile('file')) {
+            set_time_limit(600);
+            $course_info_column_name = ["", "", ""];
+            $file = Input::file('file');
+            $name = time() . '-' . $file->getClientOriginalName();
+            $new_path = public_path() . '/uploads/';
+            $file->move($new_path, $name);
+            $csv = fopen($new_path . $name, 'r');
+            $csv_col_names = fgetcsv($csv);
+            for ($i = 0; $i < count($course_info_column_name); $i++) {
+                if($csv_col_names[$i]== 'COURSECODE') $course_info_column_name[$i] = 'subject_id';
+                else if($csv_col_names[$i]== 'NAMEENGLISHABBR') $course_info_column_name[$i] = 'name';
+                else if($csv_col_names[$i]== 'TOTALCREDIT') $course_info_column_name[$i] = 'credit';
+            }
+
+            while (!feof($csv)) {
+                $var = fgetcsv($csv);
+                if ($var) {
+                    $new_var = [];
+                    $isnull = false;
+                    for ($i = 0; $i < count($course_info_column_name); $i++) {
+                        if($var[$i]=='') $isnull = true;
+                        $new_var[$course_info_column_name[$i]] = $var[$i];
+                    }
+                    if(!$isnull)
+                        SubjectInfo::create($new_var);
+                }
+            }
+            try{
+                unlink($new_path . $name);
+            }catch(Exception $e){}
+            return view('upload-csv')->with('success', true);
+        }
+        return view('upload-csv')->with('error', 'Please select file');
+    }
+
     public function getAddEditQA(){
         $user = Auth::user();
         if($user == null){
