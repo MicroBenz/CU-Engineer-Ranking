@@ -35,4 +35,5 @@ Route::get('/admin','AdminController@login');
 Route::get('/admin/index','AdminController@getIndex');
 Route::get('/admin/edit-ratio','AdminController@getEditRatio');
 Route::get('/admin/upload-csv','AdminController@getUploadCSV');
+Route::post('/admin/upload-csv','AdminController@postUploadCSV');
 Route::get('/admin/add-edit-faq','AdminController@getAddEditQA');
