@@ -134,26 +134,26 @@
 @stop
 
 @section('script')
-    {{--<script>--}}
-        {{--var info = JSON.parse("{{$gpax_json}}".replace(/&quot;/g,'"'));--}}
-        {{--new Morris.Line({--}}
-            {{--// ID of the element in which to draw the chart.--}}
-            {{--element: 'grade-graph-desktop',--}}
-            {{--// Chart data records -- each entry in this array corresponds to a point on--}}
-            {{--// the chart.--}}
-            {{--data: info,--}}
-            {{--// The name of the data record attribute that contains x-values.--}}
-            {{--xkey: 'semester',--}}
-            {{--// A list of names of data record attributes that contain y-values.--}}
-            {{--ykeys: ['value'],--}}
-            {{--// Labels for the ykeys -- will be displayed when you hover over the--}}
-            {{--// chart.--}}
-            {{--labels: ['GPAX'],--}}
+    <script>
+        var info = JSON.parse("{{$gpax_json}}".replace(/&quot;/g,'"'));
+        new Morris.Line({
+            // ID of the element in which to draw the chart.
+            element: 'grade-graph-desktop',
+            // Chart data records -- each entry in this array corresponds to a point on
+            // the chart.
+            data: info,
+            // The name of the data record attribute that contains x-values.
+            xkey: 'semester',
+            // A list of names of data record attributes that contain y-values.
+            ykeys: ['value'],
+            // Labels for the ykeys -- will be displayed when you hover over the
+            // chart.
+            labels: ['GPAX'],
 
-            {{--parseTime: false,--}}
-            {{--gridTextFamily:'Montserrat'--}}
-        {{--});--}}
-    {{--</script>--}}
+            parseTime: false,
+            gridTextFamily:'Montserrat'
+        });
+    </script>
 
     <script>
         var info = JSON.parse("{{$gpax_json}}".replace(/&quot;/g,'"'));
@@ -175,7 +175,8 @@
             gridTextFamily:'Montserrat'
         });
     </script>
-    <script>
+    {{--<script>
+        var info = JSON.parse("{{$gpax_json}}".replace(/&quot;/g,'"'));
         var chart = c3.generate({
             bindto: '#grade-graph-desktop',
             data: {
@@ -185,5 +186,5 @@
                 ]
             }
         });
-    </script>
+    </script>--}}
 @stop
