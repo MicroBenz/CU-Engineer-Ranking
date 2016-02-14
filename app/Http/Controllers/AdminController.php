@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\SubjectInfo;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 
+use App\SubjectInfo;
+use App\UserGPAX;
 use App\StudyResult;
 use App\RankingWeight;
 use App\NonMajorRankingScore;
@@ -47,7 +49,50 @@ class AdminController extends Controller
         return view('dashboard.upload-csv');
     }
 
-    public function postUploadCSV()
+    public function uploadUserGPAXCSV()
+    {
+        $user = Auth::user();
+        if (!$user)
+            return redirect('/admin');
+        if (Input::hasFile('file')) {
+            set_time_limit(600);
+            $user_gpax_column_name = ["", "", "","","",""];
+            $file = Input::file('file');
+            $name = time() . '-' . $file->getClientOriginalName();
+            $new_path = public_path() . '/uploads/';
+            $file->move($new_path, $name);
+            $csv = fopen($new_path . $name, 'r');
+            $csv_col_names = fgetcsv($csv);
+            for ($i = 0; $i < count($user_gpax_column_name); $i++) {
+                if($csv_col_names[$i]== 'STUDENTCODE') $user_gpax_column_name[$i] = 'user_id';
+                else if($csv_col_names[$i]== 'ACAD_YEAR') $user_gpax_column_name[$i] = 'year';
+                else if($csv_col_names[$i]== 'SEMESTER') $user_gpax_column_name[$i] = 'semester';
+                else if($csv_col_names[$i]== 'GPA') $user_gpax_column_name[$i] = 'gpa';
+                else if($csv_col_names[$i]== 'GPAX') $user_gpax_column_name[$i] = 'gpax';
+            }
+
+            while (!feof($csv)) {
+                $var = fgetcsv($csv);
+                if ($var) {
+                    $new_var = [];
+                    $isnull = false;
+                    for ($i = 0; $i < count($user_gpax_column_name); $i++) {
+                        if($var[$i]=='') $isnull = true;
+                        $new_var[$user_gpax_column_name[$i]] = $var[$i];
+                    }
+                    if(!$isnull)
+                        UserGPAX::create($new_var);
+                }
+            }
+            try{
+                unlink($new_path . $name);
+            }catch(Exception $e){}
+            return view('upload-csv')->with('success', true);
+        }
+        return view('upload-csv')->with('error', 'Please select file');
+    }
+
+    public function uploadCourseInfoCSV()
     {
         $user = Auth::user();
         if (!$user)
