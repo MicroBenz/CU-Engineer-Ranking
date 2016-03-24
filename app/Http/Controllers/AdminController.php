@@ -367,28 +367,26 @@ class AdminController extends Controller
         $name = time() . '-' . $file->getClientOriginalName();
         $new_path = public_path() . '/uploads/';
         $file->move($new_path, $name);
-        Excel::load('uploads\\'.$name, function($reader) {
-
-            $results = $reader->get();
-            echo '<pre>' .Carbon::now(). '</pre>';
-            $uploader = [];
-            foreach($results as $row){
+        echo '<pre>' .Carbon::now(). '</pre>';
+        $uploader = [];
+        $results = Excel::load('uploads\\'.$name,function($reader) {
+            $reader->each(function($row) {
                 if(!is_null($row['studentcode'])) {
                     $name_surname = explode(" ", $row['name']);
-                    $r = array('user_id'=>$row['studentcode'],'password'=>bcrypt('111111'),'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']);
-
-                    array_push($uploader,$r);
-                    //User::create(['user_id'=>$row['studentcode'],'password'=>bcrypt('111111'),'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']]);
+//                    $r = array('user_id'=>$row['studentcode'],'password'=>bcrypt('111111'),'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']);
+//                    $uploader[]=$r;
+                    User::create(['user_id'=>$row['studentcode'],'password'=>bcrypt('111111'),'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']]);
                 }
-            }
-            foreach($uploader as $row){
-                echo '<pre>'.implode(",",$row).'</pre>';
-            }
-            //echo '<pre>' .$uploader. '</pre>';
-            //User::create($uploader);
-            echo '<pre>' .Carbon::now(). '</pre>';
-
-        });
+            });
+        })->toArray();
+        echo '<pre>' .Carbon::now(). '</pre>';
+        dd($results);
+//        User::insert($uploader);
+//        foreach($uploader as $row){
+//            echo '<pre>'.implode(",",$row).'</pre>';
+//        }
+//        echo '<pre>' .$uploader. '</pre>';
+//        User::create($uploader);
         unlink($new_path.$name);
     }
 
