@@ -370,18 +370,14 @@ class AdminController extends Controller
         Excel::load('uploads\\'.$name, function($reader) {
 
             $results = $reader->get();
-            //echo '<pre>' .Carbon::now(). '</pre>';
-
+            echo '<pre>' .Carbon::now(). '</pre>';
             foreach($results as $row){
                 if(!is_null($row['studentcode'])) {
                     $name_surname = explode(" ", $row['name']);
-                    $row['name'] = $name_surname[0];
-                    $row['surname'] = $name_surname[1];
-                    //User::create(['user_id'=>$row['studentcode'],'password'=>bcrypt('111111'),'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']]);
+                    User::create(['user_id'=>$row['studentcode'],'password'=>bcrypt('111111'),'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']]);
                 }
             }
-            echo '<pre>' .$results. '</pre>';
-            User::create(['user_id'=>$results['studentcode'],'password'=>bcrypt('111111'),'name'=>$results['name'],'surname'=>$results['surname'],'major'=>$results['department'],'adviser_code'=>'PVK','status'=>$results['status']]);
+            echo '<pre>' .Carbon::now(). '</pre>';
 
         });
         unlink($new_path.$name);
