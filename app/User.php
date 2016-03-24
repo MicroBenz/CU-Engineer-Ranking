@@ -17,7 +17,8 @@ class User extends Model implements AuthenticatableContract,
     use Authenticatable, Authorizable, CanResetPassword;
 
     protected $table = 'users';
-    protected $fillable = ['user_id', 'password', 'name', 'surname', 'major', 'adviser_code'];
+    public $timestamps = false;
+    protected $fillable = ['user_id', 'password', 'name', 'surname', 'major', 'adviser_code','status'];
     protected $hidden = ['password', 'remember_token'];
 
     public function gpax(){

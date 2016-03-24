@@ -15,8 +15,12 @@ class PagesController extends Controller
 {
     public function login(){
         $user = Auth::user();
-        if($user != null)
-            return redirect('/profile');
+        if($user != null) {
+            if($user['status'] == 'admin')
+                return redirect('/admin/index');
+            else
+                return redirect('/profile');
+        }
         $hasError = Session::get('hasError');
         return view('login',compact('hasError'));
     }
@@ -24,8 +28,13 @@ class PagesController extends Controller
         $uid = Input::get('student-id');
         $pw = Input::get('pwd');
         $remember = Input::get('remember');
-        if(Auth::attempt(['user_id' => $uid, 'password' => $pw], $remember))
-            return redirect('/profile');
+        if(Auth::attempt(['user_id' => $uid, 'password' => $pw], $remember)) {
+            $user = Auth::user();
+            if($user['status']=='admin')
+                return redirect('/admin/index');
+            else
+                return redirect('profile');
+        }
         else
             return Redirect::back()->with('hasError', true);
     }
@@ -42,6 +51,9 @@ class PagesController extends Controller
         $user = Auth::user();
         if($user == null)
             return redirect('/login');
-        return view('profile.academic-profile');
+        if($user['status'] == 'admin')
+            return view('dashboard.main');
+        else
+            return view('profile.academic-profile');
     }
 }

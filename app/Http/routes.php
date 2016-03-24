@@ -31,9 +31,8 @@ Route::get('/test/db/adviser','TestController@testAdviser');
 
 Route::get('/test/dashboard','TestController@testDashboard');
 
-Route::get('/admin','AdminController@login');
 Route::get('/admin/index','AdminController@getIndex');
 Route::get('/admin/edit-ratio','AdminController@getEditRatio');
 Route::get('/admin/upload-csv','AdminController@getUploadCSV');
-Route::post('/admin/upload-csv','AdminController@uploadCourseInfoCSV');
+Route::post('/admin/upload-csv','AdminController@uploadXlsx');
 Route::get('/admin/add-edit-faq','AdminController@getAddEditQA');

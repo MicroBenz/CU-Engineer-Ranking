@@ -23,7 +23,7 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li>
-                    <a class="nice-animation" href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                    <a class="nice-animation" href="{{ url('/logout') }}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                 </li>
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->

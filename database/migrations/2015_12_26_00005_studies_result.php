@@ -19,7 +19,6 @@ class StudiesResult extends Migration
             $table->string('semester');
             $table->string('subject_id');
             $table->string('grade');
-            $table->timestamps();
 
             $table  ->foreign('user_id')
                     ->references('user_id')

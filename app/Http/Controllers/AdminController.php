@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
+use Maatwebsite\Excel\Facades\Excel;
 
 use App\User;
 use App\Adviser;
@@ -21,32 +23,24 @@ use App\NonMajorRankingScore;
 
 class AdminController extends Controller
 {
-    public function login(){
-        $user = Auth::user();
-        if($user != null){
-            return redirect('/admin/index');
-        }
-        $hasError = Session::get('hasError');
-        return view('back-login',compact('hasError'));
-    }
     public function getIndex(){
         $user = Auth::user();
-        if($user == null){
-            return redirect('/admin');
+        if($user == null || $user['status'] != 'admin'){
+            return redirect('/');
         }
         return view('dashboard.main');
     }
     public function getEditRatio(){
         $user = Auth::user();
-        if($user == null){
-            return redirect('/admin');
+        if($user == null || $user['status'] != 'admin'){
+            return redirect('/');
         }
         return view('dashboard.edit-ratio');
     }
     public function getUploadCSV(){
         $user = Auth::user();
-        if($user == null){
-            return redirect('/admin');
+        if($user == null || $user['status'] != 'admin'){
+            return redirect('/');
         }
         return view('dashboard.upload-csv');
     }
@@ -100,8 +94,8 @@ class AdminController extends Controller
     public function uploadAdviserCSV()
     {
         $user = Auth::user();
-        if (!$user)
-            return redirect('/admin');
+        if ($user == null || $user['status'] != 'admin')
+            return redirect('/login');
         if (Input::hasFile('file')) {
             set_time_limit(600);
             $adviser_column_name = ["", "", "", "", "", "", ""];
@@ -141,11 +135,64 @@ class AdminController extends Controller
         return view('upload-csv')->with('error', 'Please select file');
     }
 
+    public function uploadUser()
+    {
+        $user = Auth::user();
+        if ($user == null || $user['status'] != 'admin')
+            return redirect('/login');
+        if (Input::hasFile('file')) {
+            set_time_limit(600);
+            $users_column_name = ["","","",""];
+            $file = Input::file('file');
+            $name = time() . '-' . $file->getClientOriginalName();
+            $new_path = public_path() . '/uploads/';
+            $file->move($new_path, $name);
+            $csv = fopen($new_path . $name, 'r');
+            $csv_col_names = fgetcsv($csv,null,',');
+            for ($i = 0; $i < count($users_column_name); $i++) {
+                var_dump($i);
+                var_dump($csv_col_names[$i]);
+                if(trim($csv_col_names[$i])== "STUDENTCODE") $users_column_name[$i] = 'user_id';
+                else if(trim($csv_col_names[$i])== 'NAME') $users_column_name[$i] = 'name';
+                else if(trim($csv_col_names[$i])== 'DEPARTMENT') $users_column_name[$i] = 'major';
+                else if(trim($csv_col_names[$i])== 'STATUS') $users_column_name[$i] = 'status';
+                var_dump($users_column_name[$i]);
+            }
+//            var_dump("1)",$csv_col_names);
+//            var_dump("2)",$users_column_name);
+
+            while (!feof($csv)) {
+                $var = fgetcsv($csv,null,',');
+                if ($var) {
+                    $new_var = [];
+                    $isnull = false;
+                    for ($i = 0; $i < count($users_column_name); $i++) {
+                        if (trim($var[$i]) == '') $isnull = true;
+                        $new_var[$users_column_name[$i]] = trim($var[$i]);
+                    }
+                    $new_var['password'] = bcrypt('111111');
+                    $new_var['surname'] = "";
+                    $new_var['adviser_code'] = "PVK";
+                    if(!$isnull) {
+                        $get_user = User::find($new_var['user_id']);
+                        if($get_user) $get_user->update($new_var);
+                        else User::create($new_var);
+                    }
+                }
+            }
+            try{
+                unlink($new_path . $name);
+            }catch(Exception $e){}
+            return view('upload-csv')->with('success', true);
+        }
+        return view('upload-csv')->with('error', 'Please select file');
+    }
+
     public function uploadUserGPAXCSV()
     {
         $user = Auth::user();
-        if (!$user)
-            return redirect('/admin');
+        if ($user == null || $user['status'] != 'admin')
+            return redirect('/login');
         if (Input::hasFile('file')) {
             set_time_limit(600);
             $user_gpax_column_name = ["", "", "", "", ""];
@@ -187,8 +234,8 @@ class AdminController extends Controller
     public function uploadCourseInfoCSV()
     {
         $user = Auth::user();
-        if (!$user)
-            return redirect('/admin');
+        if ($user == null || $user['status'] != 'admin')
+            return redirect('/login');
         if (Input::hasFile('file')) {
             set_time_limit(600);
             $course_info_column_name = ["", "", ""];
@@ -228,8 +275,8 @@ class AdminController extends Controller
     public function uploadStudyResultCSV()
     {
         $user = Auth::user();
-        if (!$user)
-            return redirect('/admin');
+        if ($user == null || $user['status'] != 'admin')
+            return redirect('/login');
         if (Input::hasFile('file')) {
             set_time_limit(600);
             $study_result_column_name = ["", "", "", "", ""];
@@ -270,8 +317,8 @@ class AdminController extends Controller
 
     public function getAddEditQA(){
         $user = Auth::user();
-        if($user == null){
-            return redirect('/admin');
+        if($user == null || $user['status'] != 'admin'){
+            return redirect('/login');
         }
         return view('dashboard.edit-qa');
     }
@@ -315,5 +362,29 @@ class AdminController extends Controller
         }
     }
 
+    public function uploadXlsx(){
+        $file = Input::file('file');
+        $name = time() . '-' . $file->getClientOriginalName();
+        $new_path = public_path() . '/uploads/';
+        $file->move($new_path, $name);
+        Excel::load('uploads\\'.$name, function($reader) {
+
+            $results = $reader->get();
+            //echo '<pre>' .Carbon::now(). '</pre>';
+
+            foreach($results as $row){
+                if(!is_null($row['studentcode'])) {
+                    $name_surname = explode(" ", $row['name']);
+                    $row['name'] = $name_surname[0];
+                    $row['surname'] = $name_surname[1];
+                    //User::create(['user_id'=>$row['studentcode'],'password'=>bcrypt('111111'),'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']]);
+                }
+            }
+            echo '<pre>' .$results. '</pre>';
+            User::create(['user_id'=>$results['studentcode'],'password'=>bcrypt('111111'),'name'=>$results['name'],'surname'=>$results['surname'],'major'=>$results['department'],'adviser_code'=>'PVK','status'=>$results['status']]);
+
+        });
+        unlink($new_path.$name);
+    }
 
 }
