@@ -368,26 +368,18 @@ class AdminController extends Controller
         $new_path = public_path() . '/uploads/';
         $file->move($new_path, $name);
         echo '<pre>' .Carbon::now(). '</pre>';
-        $uploader = [];
-        $results = Excel::load('uploads\\'.$name,function($reader) {
-            $reader->each(function($row) {
-                if(!is_null($row['studentcode'])) {
-                    $name_surname = explode(" ", $row['name']);
-//                    $r = array('user_id'=>$row['studentcode'],'password'=>bcrypt('111111'),'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']);
-//                    $uploader[]=$r;
-                    User::create(['user_id'=>$row['studentcode'],'password'=>bcrypt('111111'),'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']]);
-                }
-            });
-        })->toArray();
+        $results = Excel::load('uploads\\'.$name)->toArray();
+        $bc_pw = bcrypt('111111');
+        foreach($results as $row)
+            if(!is_null($row['studentcode'])) {
+                $name_surname = explode(" ", $row['name']);
+//                $r = array('user_id'=>$row['studentcode'],'password'=>bcrypt('111111'),'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']);
+//                $uploader[]=$r;
+                User::create(['user_id'=>$row['studentcode'],'password'=>$bc_pw,'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']]);
+            }
         echo '<pre>' .Carbon::now(). '</pre>';
-        dd($results);
-//        User::insert($uploader);
-//        foreach($uploader as $row){
-//            echo '<pre>'.implode(",",$row).'</pre>';
-//        }
-//        echo '<pre>' .$uploader. '</pre>';
-//        User::create($uploader);
         unlink($new_path.$name);
+        dd($results);
     }
 
 }
