@@ -367,29 +367,19 @@ class AdminController extends Controller
         $name = time() . '-' . $file->getClientOriginalName();
         $new_path = public_path() . '/uploads/';
         $file->move($new_path, $name);
-        Excel::load('uploads\\'.$name, function($reader) {
-
-            $results = $reader->get();
-            echo '<pre>' .Carbon::now(). '</pre>';
-            $uploader = [];
-            foreach($results as $row){
-                if(!is_null($row['studentcode'])) {
-                    $name_surname = explode(" ", $row['name']);
-                    $r = array('user_id'=>$row['studentcode'],'password'=>bcrypt('111111'),'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']);
-
-                    array_push($uploader,$r);
-                    //User::create(['user_id'=>$row['studentcode'],'password'=>bcrypt('111111'),'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']]);
-                }
+        echo '<pre>' .Carbon::now(). '</pre>';
+        $results = Excel::load('uploads\\'.$name)->toArray();
+        $bc_pw = bcrypt('111111');
+        foreach($results as $row)
+            if(!is_null($row['studentcode'])) {
+                $name_surname = explode(" ", $row['name']);
+//                $r = array('user_id'=>$row['studentcode'],'password'=>bcrypt('111111'),'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']);
+//                $uploader[]=$r;
+                User::create(['user_id'=>$row['studentcode'],'password'=>$bc_pw,'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']]);
             }
-            foreach($uploader as $row){
-                echo '<pre>'.implode(",",$row).'</pre>';
-            }
-            //echo '<pre>' .$uploader. '</pre>';
-            //User::create($uploader);
-            echo '<pre>' .Carbon::now(). '</pre>';
-
-        });
+        echo '<pre>' .Carbon::now(). '</pre>';
         unlink($new_path.$name);
+        dd($results);
     }
 
 }
