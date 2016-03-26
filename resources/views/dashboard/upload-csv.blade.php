@@ -11,7 +11,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <form method="post" action="{{url().'/admin/upload-csv'}}" enctype="multipart/form-data">
+        <form method="post" action="{{url().'/admin/upload-user-csv'}}" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="form-group">
                 <label for="exampleInputFile">File input</label>

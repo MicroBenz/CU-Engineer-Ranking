@@ -362,7 +362,7 @@ class AdminController extends Controller
         }
     }
 
-    public function uploadXlsx(){
+    public function uploadUserXlsx(){
         $file = Input::file('file');
         $name = time() . '-' . $file->getClientOriginalName();
         $new_path = public_path() . '/uploads/';
