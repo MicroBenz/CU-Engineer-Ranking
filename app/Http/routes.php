@@ -35,4 +35,8 @@ Route::get('/admin/index','AdminController@getIndex');
 Route::get('/admin/edit-ratio','AdminController@getEditRatio');
 Route::get('/admin/upload-csv','AdminController@getUploadCSV');
 Route::post('/admin/upload-user-csv','AdminController@uploadUserXlsx');
+Route::post('/admin/upload-gpax-csv','AdminController@uploadStudentGPAXXlsx');
+Route::post('/admin/upload-course-csv','AdminController@uploadCourseXlsx');
+Route::post('/admin/upload-adviser-csv','AdminController@uploadAdviserXlsx');
+Route::post('/admin/upload-study-result-csv','AdminController@uploadStudentStudyResultXlsx');
 Route::get('/admin/add-edit-faq','AdminController@getAddEditQA');
