@@ -54,7 +54,7 @@ class AdminController extends Controller
     }
 
     public function calOneStudentMajorScore(Array $user){
-        
+
         $student_grade = StudyResult::where('studies_result.user_id',$user->user_id)
                             ->join('subjects','studies_result.subject_id','=','subjects.subject_id')->get();
         $ranking_weight = RankingWeight::get();
@@ -80,7 +80,7 @@ class AdminController extends Controller
             }
             NonMajorRankingScore::where('user_id',$user->user_id)->update([($major_weight->major."_score") => $score]);
             //NonMajorRankingScore::insert(['user_id'=> $user->user_id,($ranking_weight->major."_score") => $score]);
-        }   
+        }
 
     }
 
@@ -141,7 +141,7 @@ class AdminController extends Controller
             if(!is_null($row['studentcode'])) {
 //                $r = array('user_id'=>$row['studentcode'],'password'=>bcrypt('111111'),'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']);
 //                $uploader[]=$r;
-                SubjectInfo::create(['subject_id'=>$row['coursecode'],'name'=>$row['nameenglishabbr'],'credit'=>$row['credit']);
+                SubjectInfo::create(['subject_id'=>$row['coursecode'],'name'=>$row['nameenglishabbr'],'credit'=>$row['credit']]);
             }
         echo '<pre>' .Carbon::now(). '</pre>';
         unlink($new_path.$name);
