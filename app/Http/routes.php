@@ -15,7 +15,7 @@
 Route::get('/','PagesController@getHome');
 
 Route::get('/login','PagesController@login');
-Route::post('/login','PagesController@postLogin');
+Route::post('/login','PagesController@cas_login');
 Route::get('/logout','PagesController@logout');
 
 Route::get('/profile','ProfileController@getAcademicProfile');
