@@ -145,7 +145,7 @@
                 <div class="col-md-12 col-sm-12 approx-rank">
                     <div class="card">
                         <p class="header-text">Min Rank</p>
-                        <p class="rank-score">253</p>
+                        <p id="min-rank" class="rank-score">-</p>
                     </div>
                 </div>
             </div>
@@ -153,7 +153,7 @@
                 <div class="col-md-12 col-sm-12 approx-rank">
                     <div class="card">
                         <p class="header-text">Max Rank</p>
-                        <p class="rank-score">107</p>
+                        <p id="max-rank" class="rank-score">-</p>
                     </div>
                 </div>
             </div>
@@ -174,9 +174,11 @@
                     <option value="be">Naval Architecture and Marine Engineering</option>
                     <option value="ie">Industrial Engineering</option>
                     <option value="che">Chemical Engineering</option>
-                    <option value="metal">Metallurgical Engineering</option>
-                    <option value="env">Environmental Engineering</option>
                     <option value="pe">Petroleum Engineering</option>
+                    <option value="geo">Georesources Engineering</option>
+                    <option value="env">Environmental Engineering</option>
+                    <option value="metal">Metallurgical Engineering</option>
+                    <option value="survey">Survey Engineering</option>
                     <option value="cp">Computer Engineering</option>
                 </select>
 
@@ -281,11 +283,11 @@
             </div>
             <div class="col-xs-10 col-xs-offset-1 card rank">
                 <p class="header-text">Min Rank</p>
-                <p class="rank-score">999</p>
+                <p id="min-rank-mb" class="rank-score">-</p>
             </div>
             <div class="col-xs-10 col-xs-offset-1 card rank">
                 <p class="header-text">Max Rank</p>
-                <p class="rank-score">1</p>
+                <p id="max-rank-mb" class="rank-score">-</p>
             </div>
         </div>
     </div>
@@ -446,6 +448,28 @@
             console.log(major_rank);
             document.getElementById("approx-rank").innerHTML = major_rank[major_select];
             document.getElementById("approx-rank-mobile").innerHTML = major_rank[major_select];
+
+            var minRank = [595,585,319,438,563,471,430,67,680,626,668,676,621];
+            var maxRank = [73, 11 ,1  ,122,97 ,15 ,1  ,4 ,502,266,25 ,568 ,1];
+            var idx;
+            switch (major_select) {
+                case "ce": idx=0;break;
+                case "ee": idx=1;break;
+                case "me": idx=2;break;
+                case "auto": idx=3;break;
+                case "be": idx=4;break;
+                case "ie": idx=5;break;
+                case "che": idx=6;break;
+                case "pe": idx=7;break;
+                case "geo": idx=8;break;
+                case "env": idx=9;break;
+                case "metal": idx=10;break;
+                case "survey": idx=11;break;
+                case "cp": idx=12;break;
+            }
+            document.getElementById("min-rank").innerHTML = minRank[idx];
+            document.getElementById("max-rank").innerHTML = maxRank[idx];
+
         }
     </script>
     <script>
@@ -601,6 +625,28 @@
             var major_rank = {!! json_encode($rank_json) !!};
             console.log(major_rank);
             document.getElementById("approx-rank-mobile").innerHTML = major_rank[major_select];
+
+            var minRank = [595,585,319,438,563,471,430,67,680,626,668,676,621];
+            var maxRank = [73, 11 ,1  ,122,97 ,15 ,1  ,4 ,502,266,25 ,568 ,1];
+            var idx;
+            switch (major_select) {
+                case "ce": idx=0;break;
+                case "ee": idx=1;break;
+                case "me": idx=2;break;
+                case "auto": idx=3;break;
+                case "be": idx=4;break;
+                case "ie": idx=5;break;
+                case "che": idx=6;break;
+                case "pe": idx=7;break;
+                case "geo": idx=8;break;
+                case "env": idx=9;break;
+                case "metal": idx=10;break;
+                case "survey": idx=11;break;
+                case "cp": idx=12;break;
+            }
+            document.getElementById("min-rank-mb").innerHTML = minRank[idx];
+            document.getElementById("max-rank-mb").innerHTML = maxRank[idx];
+
         }
     </script>
 
