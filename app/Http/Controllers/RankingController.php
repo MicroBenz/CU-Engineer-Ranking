@@ -17,7 +17,22 @@ class RankingController extends Controller
 {
     public function getRanking(){
         $user = Auth::user();
-        $rank_score = NonMajorRankingScore::all()->toArray();
+        $student_ranking_score = NonMajorRankingScore::all()->toArray();
+        $user_ranking_score = NonMajorRankingScore::where('user_id',$user['user_id'])->first();
+
+        $array_major = ['ce','ee','me','auto','be','ie','che','pe','geo','metal','cp','survey','env'];
+        $rank_json = [];
+
+        foreach($array_major as $major){
+            $major_score_array = [];
+            foreach($student_ranking_score as $student){
+                array_push($major_score_array,$student[$major."_score"]);
+            }
+            sort($major_score_array);
+            $rank = sizeof($major_score_array) - array_search($user_ranking_score[$major.'_score'],$major_score_array);
+            $rank_json[$major] = $rank;
+        }
+        dd($rank_json);
         $ce_score_array = [];
         $ee_score_array = [];
         $me_score_array = [];
@@ -34,7 +49,7 @@ class RankingController extends Controller
 
         // dd($rank_score);
         // return "WTF";
-        return view('ranking.freshy-ranking-calculator',compact('user'));
+        return view('ranking.freshy-ranking-calculator',compact('user','rank_json'));
     }
     public function getFreshyRankCalculator(){
     	$user = Auth::user();
