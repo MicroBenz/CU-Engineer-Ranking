@@ -17,6 +17,7 @@ class RankingController extends Controller
 {
     public function getRanking(){
         $user = Auth::user();
+        if($user == null) return redirect('/login');
         $student_ranking_score = NonMajorRankingScore::all()->toArray();
         $user_ranking_score = NonMajorRankingScore::where('user_id',$user['user_id'])->first();
         $user_grade = StudyResult::where('studies_result.user_id',$user['user_id'])
@@ -39,7 +40,7 @@ class RankingController extends Controller
         foreach($user_grade as $ug){
             $grade_json[$ug['name']] = $ug['grade'];
         }
-        
+
         // dd($rank_score);
         // return "WTF";
         return view('ranking.freshy-ranking-calculator',compact('user','rank_json','grade_json'));
