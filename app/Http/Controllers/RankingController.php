@@ -19,9 +19,12 @@ class RankingController extends Controller
         $user = Auth::user();
         $student_ranking_score = NonMajorRankingScore::all()->toArray();
         $user_ranking_score = NonMajorRankingScore::where('user_id',$user['user_id'])->first();
+        $user_grade = StudyResult::where('studies_result.user_id',$user['user_id'])
+            ->join('subjects','studies_result.subject_id','=','subjects.subject_id')->get();
 
         $array_major = ['ce','ee','me','auto','be','ie','che','pe','geo','metal','cp','survey','env'];
         $rank_json = [];
+        $grade_json = [];
 
         foreach($array_major as $major){
             $major_score_array = [];
@@ -32,24 +35,14 @@ class RankingController extends Controller
             $rank = sizeof($major_score_array) - array_search($user_ranking_score[$major.'_score'],$major_score_array);
             $rank_json[$major] = $rank;
         }
-        dd($rank_json);
-        $ce_score_array = [];
-        $ee_score_array = [];
-        $me_score_array = [];
-        $auto_score_array = [];
-        $be_score_array = [];
-        $ie_score_array = [];
-        $che_score_array = [];
-        $pe_score_array = [];
-        $geo_score_array = [];
-        $metal_score_array = [];
-        $cp_score_array = [];
-        $survey_score_array = [];
-        $env_score_array = [];
 
+        foreach($user_grade as $ug){
+            $grade_json[$ug['name']] = $ug['grade'];
+        }
+        
         // dd($rank_score);
         // return "WTF";
-        return view('ranking.freshy-ranking-calculator',compact('user','rank_json'));
+        return view('ranking.freshy-ranking-calculator',compact('user','rank_json','grade_json'));
     }
     public function getFreshyRankCalculator(){
     	$user = Auth::user();
