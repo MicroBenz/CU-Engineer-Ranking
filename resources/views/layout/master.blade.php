@@ -36,7 +36,7 @@
                     @endif
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    @if($user->major == 'Normal')
+                    @if($user->major == 'ไม่สังกัดภาควิชา/เทียบเท่า')
                         <li class="{{ Request::is('ranking-calculator') ? 'active' : '' }}">
                             <a href="{{ url('/ranking-calculator') }}">Ranking Calculator</a>
                         </li>
