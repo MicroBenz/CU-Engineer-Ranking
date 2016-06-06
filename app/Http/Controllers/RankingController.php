@@ -32,9 +32,9 @@ class RankingController extends Controller
         $survey_score_array = [];
         $env_score_array = [];
 
-        dd($rank_score);
-
-        return view('ranking.freshy-ranking-calculator',compact('user','aa'));
+        // dd($rank_score);
+        // return "WTF";
+        return view('ranking.freshy-ranking-calculator',compact('user'));
     }
     public function getFreshyRankCalculator(){
     	$user = Auth::user();
@@ -76,10 +76,10 @@ class RankingController extends Controller
                     NonMajorRankingScore::insert(['user_id'=> $student->user_id,(strtolower($major_weight->major))."_score" => $score]);
                 else
                     NonMajorRankingScore::where('user_id',$student->user_id)->update([(strtolower($major_weight->major)."_score") => $score]);
-                
+
             }
         }
-        //NonMajorRankingScore::where('user_id',$user->user_id)->update([(strtolower($major_weight->major)."_score") => $score]);                
+        //NonMajorRankingScore::where('user_id',$user->user_id)->update([(strtolower($major_weight->major)."_score") => $score]);
         //NonMajorRankingScore::insert(['user_id'=> $user->user_id,(strtolower($major_weight->major)."_score") => $score]);
         //NonMajorRankingScore::truncate();
         $aa = NonMajorRankingScore::get();

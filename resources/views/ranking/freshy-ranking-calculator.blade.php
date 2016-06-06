@@ -137,7 +137,7 @@
                 <div class="col-md-12 col-sm-12">
                     <div class="card">
                         <p class="header-text">Your Approx. Rank</p>
-                        <p class="rank-score">{{$aa}}</p>
+                        <p class="rank-score">55</p>
                     </div>
                 </div>
             </div>
@@ -441,8 +441,6 @@
             document.getElementById("chemlab-weight").innerHTML = weight[11];
             document.getElementById("phy1lab-weight").innerHTML = weight[12];
             document.getElementById("phy2lab-weight").innerHTML = weight[13];
-
-
         }
     </script>
 
