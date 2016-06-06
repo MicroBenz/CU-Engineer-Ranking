@@ -26,14 +26,14 @@
 
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="{{ Request::is('profile') ? 'active' : '' }}">
+                    {{-- <li class="{{ Request::is('profile') ? 'active' : '' }}">
                         <a class="" href="{{ url('/profile') }}">Academic Profile</a>
                     </li>
                     @if($user->major != 'ไม่สังกัดภาควิชา/เทียบเท่า')
                         <li class="{{ Request::is('major-ranking') ? 'active' : '' }}">
                             <a class="" href="{{ url('/major-ranking') }}">Ranking in Major</a>
                         </li>
-                    @endif
+                    @endif --}}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if($user->major == 'ไม่สังกัดภาควิชา/เทียบเท่า')
