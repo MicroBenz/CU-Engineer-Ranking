@@ -34,7 +34,7 @@ class UserTableSeeder extends Seeder
 {
     public function run()
     {
-        User::create(['user_id'=>'admin','password'=>bcrypt('111111'),'name'=>'Nattapong','surname'=>'Ousirimaneechai','major'=>'CP','adviser_code'=>'PVK','status'=>'admin']);
+        User::create(['user_id'=>'admin','password'=>bcrypt('111111'),'name'=>'Nattapong','surname'=>'Ousirimaneechai','major'=>'CP','status'=>'admin']);
 //        User::create(['user_id'=>'5631036721','password'=>bcrypt('111111'),'name'=>'Nattapong','surname'=>'Ousirimaneechai','major'=>'CP','adviser_code'=>'PVK','status'=>'normal']);
 //        User::create(['user_id'=>'5631057921','password'=>bcrypt('111111'),'name'=>'Patipol','surname'=>'Chiammunchit','major'=>'CP','adviser_code'=>'PVK','status'=>'normal']);
 //        User::create(['user_id'=>'5631056221','password'=>bcrypt('111111'),'name'=>'AA','surname'=>'MaiRoo','major'=>'CP','adviser_code'=>'PVK','status'=>'normal']);

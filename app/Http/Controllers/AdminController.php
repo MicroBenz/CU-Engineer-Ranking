@@ -105,7 +105,7 @@ class AdminController extends Controller
                 $name_surname = explode(" ", $row['name']);
 //                $r = array('user_id'=>$row['studentcode'],'password'=>bcrypt('111111'),'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']);
 //                $uploader[]=$r;
-                User::create(['user_id'=>$row['studentcode'],'password'=>$bc_pw,'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']]);
+                User::create(['user_id'=>$row['studentcode'],'password'=>$bc_pw,'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'status'=>$row['status']]);
             }
         echo '<pre>' .Carbon::now(). '</pre>';
         unlink($new_path.$name);
@@ -138,10 +138,10 @@ class AdminController extends Controller
         echo '<pre>' .Carbon::now(). '</pre>';
         $results = Excel::load('uploads\\'.$name)->toArray();
         foreach($results as $row)
-            if(!is_null($row['studentcode'])) {
+            if(!is_null($row['coursecode'])) {
 //                $r = array('user_id'=>$row['studentcode'],'password'=>bcrypt('111111'),'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']);
 //                $uploader[]=$r;
-                SubjectInfo::create(['subject_id'=>$row['coursecode'],'name'=>$row['nameenglishabbr'],'credit'=>$row['credit']]);
+                SubjectInfo::create(['subject_id'=>$row['coursecode'],'name'=>$row['nameenglishabbr'],'credit'=>$row['totalcredit']]);
             }
         echo '<pre>' .Carbon::now(). '</pre>';
         unlink($new_path.$name);
@@ -156,10 +156,10 @@ class AdminController extends Controller
         echo '<pre>' .Carbon::now(). '</pre>';
         $results = Excel::load('uploads\\'.$name)->toArray();
         foreach($results as $row)
-            if(!is_null($row['studentcode'])) {
+            if(!is_null($row['nameabbr'])) {
 //                $r = array('user_id'=>$row['studentcode'],'password'=>bcrypt('111111'),'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']);
 //                $uploader[]=$r;
-                Adviser::create(['code'=>'PVK','title'=>'Ph.D','name'=>'Peerapon','surname'=>'Vateekul','major'=>'CP','email'=>'peerapon.vateekul@gmail.com']);
+                Adviser::create(['code'=>$row['nameabbr'],'title'=>$row['position'],'name'=>$row['namethai'],'surname'=>$row['surnamethai'],'major'=>$row['department'],'email'=>$row['email']]);
             }
         echo '<pre>' .Carbon::now(). '</pre>';
         unlink($new_path.$name);
@@ -177,7 +177,7 @@ class AdminController extends Controller
             if(!is_null($row['studentcode'])) {
 //                $r = array('user_id'=>$row['studentcode'],'password'=>bcrypt('111111'),'name'=>$name_surname[0],'surname'=>$name_surname[1],'major'=>$row['department'],'adviser_code'=>'PVK','status'=>$row['status']);
 //                $uploader[]=$r;
-                StudyResult::create(['user_id'=>'5631036721','year'=>'2557','semester'=>'2','subject_id'=>'123','grade'=>'A']);
+                StudyResult::create(['user_id'=>$row['studentcode'],'year'=>$row['year'],'semester'=>$row['semester'],'subject_id'=>$row['coursecode'],'grade'=>$row['grade']]);
             }
         echo '<pre>' .Carbon::now(). '</pre>';
         unlink($new_path.$name);

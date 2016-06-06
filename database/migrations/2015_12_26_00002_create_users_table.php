@@ -19,13 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('major');
-            $table->string('adviser_code');
             $table->string('status');
             $table->rememberToken();
-            $table  ->foreign('adviser_code')
-                ->references('code')
-                ->on('advisers')
-                ->onDelete('cascade');
         });
     }
 

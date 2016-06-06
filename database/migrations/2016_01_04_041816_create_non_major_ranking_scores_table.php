@@ -26,6 +26,8 @@ class CreateNonMajorRankingScoresTable extends Migration
             $table->double('env_score');
             $table->double('pe_score');
             $table->double('cp_score');
+            $table->double('geo_score');
+            $table->double('survey_score');
         });
     }
 

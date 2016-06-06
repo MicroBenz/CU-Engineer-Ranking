@@ -24,9 +24,11 @@
                     <option value="be">Naval Architecture and Marine Engineering</option>
                     <option value="ie">Industrial Engineering</option>
                     <option value="che">Chemical Engineering</option>
-                    <option value="metal">Metallurgical Engineering</option>
-                    <option value="env">Environmental Engineering</option>
                     <option value="pe">Petroleum Engineering</option>
+                    <option value="geo">Georesources Engineering</option>
+                    <option value="env">Environmental Engineering</option>
+                    <option value="metal">Metallurgical Engineering</option>
+                    <option value="survey">Survey Engineering</option>
                     <option value="cp">Computer Engineering</option>
                 </select>
             </div>
@@ -383,6 +385,38 @@
                 weight[3] = "3";
                 weight[4] = "3";
                 weight[5] = "3";
+                weight[6] = "3";
+                weight[7] = "3";
+                weight[8] = "3";
+                weight[9] = "3";
+                weight[10] = "3";
+                weight[11] = "1";
+                weight[12] = "1";
+                weight[13] = "1";
+            }
+            else if (major_select == "geo" ){
+                weight[0] = "3";
+                weight[1] = "3";
+                weight[2] = "4";
+                weight[3] = "3";
+                weight[4] = "3";
+                weight[5] = "3";
+                weight[6] = "3";
+                weight[7] = "3";
+                weight[8] = "3";
+                weight[9] = "4";
+                weight[10] = "4";
+                weight[11] = "1";
+                weight[12] = "1";
+                weight[13] = "1";
+            }
+            else if (major_select == "survey" ){
+                weight[0] = "3";
+                weight[1] = "3";
+                weight[2] = "6";
+                weight[3] = "3";
+                weight[4] = "6";
+                weight[5] = "6";
                 weight[6] = "3";
                 weight[7] = "3";
                 weight[8] = "3";

@@ -15,15 +15,36 @@ use App\NonMajorRankingScore;
 
 class RankingController extends Controller
 {
+    public function getRanking(){
+        $user = Auth::user();
+        $rank_score = NonMajorRankingScore::all()->toArray();
+        $ce_score_array = [];
+        $ee_score_array = [];
+        $me_score_array = [];
+        $auto_score_array = [];
+        $be_score_array = [];
+        $ie_score_array = [];
+        $che_score_array = [];
+        $pe_score_array = [];
+        $geo_score_array = [];
+        $metal_score_array = [];
+        $cp_score_array = [];
+        $survey_score_array = [];
+        $env_score_array = [];
+
+        dd($rank_score);
+
+        return view('ranking.freshy-ranking-calculator',compact('user','aa'));
+    }
     public function getFreshyRankCalculator(){
     	$user = Auth::user();
-    	if($user == null)
-            return redirect('/login');
-        if($user->major != 'CP')
-        	return redirect('/profile');
+//    	if($user == null)
+//            return redirect('/login');
+//        if($user->major != 'CP')
+//        	return redirect('/profile');
 
         // Only Test Score will delete after finish
-        $non_major_student = User::where('major','CP')->get();
+        $non_major_student = User::where('major','ไม่สังกัดภาควิชา/เทียบเท่า')->get();
         $idx = 0;
         foreach ($non_major_student as $student) {
             # code...

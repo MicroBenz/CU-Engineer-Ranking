@@ -19,7 +19,7 @@ class CreateAdvisersTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('major');
-            $table->string('email');
+            $table->string('email')->nullable();
         });
     }
 
